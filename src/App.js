@@ -10,14 +10,6 @@ function App () {
         <p>
           Welcome to the best Overwatch League Experience Ever.
         </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
       </header>
     </div>
   )
