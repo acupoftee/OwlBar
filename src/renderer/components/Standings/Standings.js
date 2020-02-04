@@ -18,29 +18,32 @@ const HeaderCell = styled.div`
   color: #FFF;
   font-weight: 600;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   z-index: 2;
 `
 const Cell = styled.div`
- display: inline-block;
+  display: inline-block;
   width: ${props => props.width}px;
   padding: 6px 14px;
-  border-bottom: 1px solid #FFF;
+  border-bottom: 2px solid #f3f3f3;
   text-align: ${props => props.align || 'center'};
+  background-color: ${props => props.backgroundColor || 'transparent'};
 `
 
 const TeamLogo = styled.img`
-  width: 2%;
-  padding: 6px 14px;
+  width: 18px;
+  height: auto;
+  padding-right: 10px;
+  vertical-align: middle;
 `
 
 const headerRowRenderer = ({ className, style }) => (
   <Flex className={className} style={style}>
     <HeaderCell key='team' width='75'>
-      team
+      teams
     </HeaderCell>
     <HeaderCell key='division' width='40'>
-      div
+      DIV
     </HeaderCell>
     <HeaderCell key='win' width='35'>
       w
@@ -56,17 +59,31 @@ headerRowRenderer.propTypes = {
   style: PropTypes.object.isRequired
 }
 
+const getLogo = rowData => {
+  let logo
+  if (rowData.abbreviatedName === 'HZS') {
+    logo = rowData.logo.alt.svg
+  } else if (rowData.abbreviatedName === 'ATL') {
+    logo = rowData.logo.main.svg
+  } else {
+    logo = rowData.logo.altDark ? rowData.logo.altDark.svg : rowData.logo.main.svg
+  }
+  return logo;
+}
+
 const rowRenderer = ({ rowData, style }) => (
   <Flex key={rowData.id} style={style}>
     <Cell
       key='name'
       align='left'
       style={{
-        color: '#000',
-        fontWeight: 500
+        color: '#fff',
+        fontWeight: 700,
       }}
       width='75'
+      backgroundColor={rowData.colors.primary.color}
     >
+      <TeamLogo src={getLogo(rowData)} />
       {rowData.abbreviatedName}
     </Cell>
     <Cell
@@ -97,7 +114,7 @@ const standingsTable = teams => (
     width={300}
     height={465}
     headerHeight={32}
-    rowHeight={30}
+    rowHeight={35}
     rowCount={teams.data.length}
     rowGetter={({ index }) => teams.data[index]}
     headerRowRenderer={headerRowRenderer}
