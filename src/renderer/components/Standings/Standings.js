@@ -5,7 +5,6 @@ import { Table as VirtualizedTable } from 'react-virtualized'
 import styled from 'styled-components'
 
 const Wrapper = styled(Flex)`
-  display: flex;
   width: 100%;
   height: 100%;
   overflow-y: scroll !important;
@@ -21,6 +20,7 @@ const HeaderCell = styled.div`
   text-transform: capitalize;
   z-index: 2;
 `
+
 const Cell = styled.div`
   display: inline-block;
   width: ${props => props.width}px;
