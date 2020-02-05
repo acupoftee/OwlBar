@@ -1,17 +1,14 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Provider } from 'react-redux'
+import configureStore from './renderer/store'
+import Standings from './renderer/containers/Standings'
 
-function App () {
+const store = configureStore()
+function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Welcome to the best Overwatch League Experience Ever.
-        </p>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Standings />
+    </Provider>
   )
 }
 
