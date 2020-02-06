@@ -42,6 +42,15 @@ const TeamLogo = styled.img`
   vertical-align: middle;
 `;
 
+const Conference = styled.h3`
+  padding: 10px 0;
+  margin: 0;
+  background: #141114;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+`;
+
 const headerRowRenderer = ({
   className,
   style
@@ -120,16 +129,19 @@ const rowRenderer = ({
 );
 
 const standingsTable = (teams: any): JSX.Element => (
-  <VirtualizedTable
-    width={300}
-    height={465}
-    headerHeight={32}
-    rowHeight={35}
-    rowCount={teams.data.length}
-    rowGetter={({ index }: { index: number }) => teams.data[index]}
-    headerRowRenderer={headerRowRenderer}
-    rowRenderer={rowRenderer}
-  />
+  <>
+    <Conference>Standings</Conference>
+    <VirtualizedTable
+      width={300}
+      height={465}
+      headerHeight={32}
+      rowHeight={35}
+      rowCount={teams.data.length}
+      rowGetter={({ index }: { index: number }) => teams.data[index]}
+      headerRowRenderer={headerRowRenderer}
+      rowRenderer={rowRenderer}
+    />
+  </>
 );
 
 const StandingsTable = (teams: any): JSX.Element => (
