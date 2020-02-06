@@ -42,7 +42,7 @@ const TeamLogo = styled.img`
   vertical-align: middle;
 `;
 
-const Conference = styled.h3`
+const Conference = styled.h4`
   padding: 10px 0;
   margin: 0;
   background: #141114;
