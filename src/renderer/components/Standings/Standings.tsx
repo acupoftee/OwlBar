@@ -14,7 +14,7 @@ const HeaderCell = styled.div<{
 }>`
   width: ${props => props.width}px;
   display: inline-block;
-  padding: 6px 14px;
+  padding: 8px 14px;
   background-color: #4a4c4e;
   color: #fff;
   font-weight: 600;
@@ -48,10 +48,10 @@ const headerRowRenderer = ({
   style
 }: {
   className: string;
-  style: any;
+  style: React.CSSProperties;
 }) => (
   <Flex className={className} style={style}>
-    <HeaderCell key="team" width="75">
+    <HeaderCell key="team" width="78">
       teams
     </HeaderCell>
     <HeaderCell key="division" width="40">
@@ -95,7 +95,7 @@ const rowRenderer = ({
         color: "#fff",
         fontWeight: 700
       }}
-      width="75"
+      width="78"
       backgroundColor={rowData.colors.primary.color}
     >
       <TeamLogo src={getLogo(rowData)} />
