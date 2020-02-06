@@ -20,7 +20,6 @@ const HeaderCell = styled.div<{
   font-weight: 600;
   text-align: center;
   text-transform: capitalize;
-  z-index: 2;
 `;
 
 const Cell = styled.div<{
