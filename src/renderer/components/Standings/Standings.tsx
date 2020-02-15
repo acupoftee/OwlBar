@@ -13,8 +13,8 @@ const HeaderCell = styled.div<{
   width: string;
 }>`
   width: ${props => props.width}px;
-  display: inline-block;
   padding: 8px 14px;
+  display: inline-block;
   background-color: #4a4c4e;
   color: #fff;
   font-weight: 600;
@@ -24,8 +24,8 @@ const HeaderCell = styled.div<{
 
 const Cell = styled.div<{
   width: string;
-  align?: "left" | "right" | "center";
-  backgroundColor?: string | "transparent";
+  align?: "left" | "right";
+  backgroundColor?: string;
 }>`
   display: inline-block;
   width: ${props => props.width}px;
@@ -36,10 +36,8 @@ const Cell = styled.div<{
 `;
 
 const TeamLogo = styled.img`
-  width: 18px;
-  height: auto;
+  width: 28px;
   padding-right: 10px;
-  vertical-align: middle;
 `;
 
 const Conference = styled.h4`
@@ -59,16 +57,19 @@ const headerRowRenderer = ({
   style: React.CSSProperties;
 }) => (
   <Flex className={className} style={style}>
-    <HeaderCell key="team" width="78">
+    <HeaderCell key="team" width="120">
       teams
     </HeaderCell>
-    <HeaderCell key="division" width="40">
+    <HeaderCell key="division" width="50">
       DIV
     </HeaderCell>
-    <HeaderCell key="win" width="35">
+    <HeaderCell key="win" width="40">
       w
     </HeaderCell>
-    <HeaderCell key="loss" width="35">
+    <HeaderCell key="loss" width="40">
+      l
+    </HeaderCell>
+    <HeaderCell key="loss" width="40">
       l
     </HeaderCell>
   </Flex>
@@ -94,57 +95,52 @@ const rowRenderer = ({
 }: {
   rowData: any;
   style: React.CSSProperties;
-}): JSX.Element => (
+}) => (
   <Flex key={rowData.id} style={style}>
     <Cell
       key="name"
       align="left"
       style={{
         color: "#fff",
-        fontWeight: 700
+        fontWeight: 500,
+        display: "flex",
+        alignItems: "center"
       }}
-      width="78"
+      width="120"
       backgroundColor={rowData.colors.primary.color}
     >
       <TeamLogo src={getLogo(rowData)} />
       {rowData.abbreviatedName}
     </Cell>
-    <Cell
-      key="division"
-      width="40"
-      style={{
-        color: "gray",
-        fontWeight: 500
-      }}
-    >
+    <Cell key="division" width="50">
       {rowData.divisionId === 80 ? "PAC" : "ATL"}
     </Cell>
-    <Cell key="win" width="35">
+    <Cell key="win" width="40">
       {rowData.league.matchWin}
     </Cell>
-    <Cell key="loss" width="35">
+    <Cell key="loss" width="40">
       {rowData.league.matchLoss}
     </Cell>
   </Flex>
 );
 
-const standingsTable = (teams: any): JSX.Element => (
-  <>
+const standingsTable = (teams: any) => (
+  <div style={{ width: "100%" }}>
     <Conference>Standings</Conference>
     <VirtualizedTable
       width={300}
-      height={465}
-      headerHeight={32}
-      rowHeight={35}
+      height={357}
+      headerHeight={30}
+      rowHeight={30}
       rowCount={teams.data.length}
       rowGetter={({ index }: { index: number }) => teams.data[index]}
       headerRowRenderer={headerRowRenderer}
       rowRenderer={rowRenderer}
     />
-  </>
+  </div>
 );
 
-const StandingsTable = (teams: any): JSX.Element => (
+const StandingsTable = (teams: any) => (
   <Wrapper direction="column" align="center">
     {standingsTable(teams.data)}
   </Wrapper>
