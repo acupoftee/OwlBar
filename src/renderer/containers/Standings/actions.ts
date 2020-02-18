@@ -67,7 +67,7 @@ export function fetchData() {
     //   .catch((err: string) => dispatch(requestFailure(err)));
     // heroku: https://salty-eyrie-03841.herokuapp.com/
     return rp(
-      " https://salty-eyrie-03841.herokuapp.com/" +
+      "https://salty-eyrie-03841.herokuapp.com/" +
         "https://overwatchleague.com/en-us/standings",
       {
         "Access-Control-Allow-Origin": "http://localhost:3000"
