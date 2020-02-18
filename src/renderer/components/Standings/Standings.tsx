@@ -1,7 +1,10 @@
 import React from "react";
 import { Flex } from "antd-mobile";
 import { Table as VirtualizedTable } from "react-virtualized";
+import { getPrimaryColor } from "owl-colors";
 import styled from "styled-components";
+
+import Logos from "../../../resources/Logos";
 
 const Wrapper = styled(Flex)`
   width: 100%;
@@ -30,13 +33,13 @@ const Cell = styled.div<{
   display: inline-block;
   width: ${props => props.width}px;
   padding: 6px 14px;
-  border-bottom: 2px solid #f3f3f3;
+  border-bottom: 2px solid #e2e2e2;
   text-align: ${props => props.align || "center"};
   background-color: ${props => props.backgroundColor || "transparent"};
 `;
 
 const TeamLogo = styled.img`
-  width: 28px;
+  width: 25px;
   padding-right: 10px;
 `;
 
@@ -57,38 +60,47 @@ const headerRowRenderer = ({
   style: React.CSSProperties;
 }) => (
   <Flex className={className} style={style}>
-    <HeaderCell key="team" width="120">
-      teams
+    <HeaderCell key="team" width="90">
+      team
     </HeaderCell>
-    <HeaderCell key="division" width="50">
-      DIV
+    <HeaderCell key="rank" width="60">
+      Rank
     </HeaderCell>
-    <HeaderCell key="win" width="40">
+    <HeaderCell key="win" width="50">
       w
     </HeaderCell>
-    <HeaderCell key="loss" width="40">
+    <HeaderCell key="loss" width="50">
       l
     </HeaderCell>
-    <HeaderCell key="loss" width="40">
-      l
+    <HeaderCell key="diff" width="50">
+      diff
     </HeaderCell>
   </Flex>
 );
 
-const getLogo = (rowData: any): string => {
-  let logo;
-  if (rowData.abbreviatedName === "HZS") {
-    logo = rowData.logo.alt.svg;
-  } else if (rowData.abbreviatedName === "ATL") {
-    logo = rowData.logo.main.svg;
+const ordinal = (number: number) => {
+  const i = number % 10;
+  const j = number % 100;
+  if (i === 1 && j !== 11) {
+    return number + "st";
+  } else if (i === 2 && j !== 12) {
+    return number + "nd";
+  } else if (i === 3 && j !== 13) {
+    return number + "rd";
   } else {
-    logo = rowData.logo.altDark
-      ? rowData.logo.altDark.svg
-      : rowData.logo.main.svg;
+    return number + "th";
   }
-  return logo;
 };
 
+const getDiffColor = (diff: string) => {
+  if (diff[0] === "+") {
+    return "#007a00";
+  } else if (diff[0] === "-") {
+    return "#e50e47";
+  } else {
+    return "#000";
+  }
+};
 const rowRenderer = ({
   rowData,
   style
@@ -106,20 +118,34 @@ const rowRenderer = ({
         display: "flex",
         alignItems: "center"
       }}
-      width="120"
-      backgroundColor={rowData.colors.primary.color}
+      width="90"
+      // backgroundColor={getPrimaryColor(rowData.teamAbbName).hex}
+      backgroundColor={getPrimaryColor(rowData.teamAbbName).hex}
     >
-      <TeamLogo src={getLogo(rowData)} />
-      {rowData.abbreviatedName}
+      <TeamLogo src={Logos[rowData.teamAbbName] as string} />
+      {rowData.teamAbbName}
     </Cell>
-    <Cell key="division" width="50">
-      {rowData.divisionId === 80 ? "PAC" : "ATL"}
+    {/* <Cell key="division" width="60">
+      {rowData.conf}
+    </Cell> */}
+    <Cell key="rank" width="60">
+      {ordinal(rowData.rank)}
     </Cell>
-    <Cell key="win" width="40">
-      {rowData.league.matchWin}
+    <Cell key="win" width="50">
+      {rowData.w}
     </Cell>
-    <Cell key="loss" width="40">
-      {rowData.league.matchLoss}
+    <Cell key="loss" width="50">
+      {rowData.l}
+    </Cell>
+    <Cell
+      key="diff"
+      width="50"
+      align="right"
+      style={{
+        color: getDiffColor(rowData.diff)
+      }}
+    >
+      {rowData.diff}
     </Cell>
   </Flex>
 );
@@ -132,8 +158,8 @@ const standingsTable = (teams: any) => (
       height={357}
       headerHeight={30}
       rowHeight={30}
-      rowCount={teams.data.length}
-      rowGetter={({ index }: { index: number }) => teams.data[index]}
+      rowCount={teams.length}
+      rowGetter={({ index }: { index: number }) => teams[index]}
       headerRowRenderer={headerRowRenderer}
       rowRenderer={rowRenderer}
     />

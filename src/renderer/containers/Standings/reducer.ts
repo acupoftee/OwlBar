@@ -5,7 +5,8 @@ import { StandingsState } from "./types";
 const initialState: StandingsState = {
   loading: true,
   error: false,
-  standingsData: []
+  standingsData: [],
+  message: ""
 };
 
 export default function reducer(
@@ -32,7 +33,8 @@ export default function reducer(
       return {
         ...state,
         loading: false,
-        error: true
+        error: true,
+        message: action.message
       };
     }
     default:
