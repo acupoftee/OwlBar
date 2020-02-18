@@ -1,0 +1,44 @@
+const Logos: { [key: string]: any } = {
+  DAL:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/LLMV1UTBVHN11544055825034.svg",
+  PHI:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/52QPF1MPBXVX1544055975338.svg",
+  HOU:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/MJLP7QICH5JP1544055906758.svg",
+  BOS:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/LB92M6PBO3X81515523733716.svg",
+  NYE:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/PTX7PFVTAAZS1544055952805.svg",
+  SFS:
+    "https://images.blz-contentstack.com/v3/assets/blt321317473c90505c/bltb7f12a7f25e9e004/5e176405174b0d0c519bdec7/OWL_SFShock_Icon_1C_SILVER.svg",
+  VAL:
+    "https://images.blz-contentstack.com/v3/assets/blt321317473c90505c/blt554552c3fb615a11/5e14d288a1690a59bc5f1e35/OWL_LAValiant_Icon_2020_SVG.svg",
+  GLA:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/NCT1WP6NKDFS1544055915971.svg",
+  FLA:
+    "https://images.blz-contentstack.com/v3/assets/blt321317473c90505c/blt43c93d0207032d47/5e14d29ba78c085a219a5fe0/OWL_FloridaMayhem_Icon_2020.svg",
+  SHD:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/CZQND87P06NN1544055996911.svg",
+  SEO:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/E9MU0AK0JIXT1507858876249.svg",
+  LDN:
+    "https://bnetcmsus-a.akamaihd.net/cms/template_resource/HCS229B4DP021507822883016.svg",
+  CDH:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/YO93H9VU2UYE1544055820403.svg",
+  HZS:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/S01ILBOS6OZ71542674323474.svg",
+  PAR:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/3D6YAD9OZ9H41544055964274.svg",
+  TOR:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/JSRSX9J4F0HY1544056004176.svg",
+  VAN:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/3U5YDUD6JRGK1544056009724.svg",
+  WAS:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/OYO5HG0DWGCE1544056019664.svg",
+  ATL:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/60/609VVM89F1BY1542673347592.svg",
+  GZC:
+    "https://bnetcmsus-a.akamaihd.net/cms/page_media/OPS32KD180BL1544055837626.svg"
+};
+
+export default Logos;
