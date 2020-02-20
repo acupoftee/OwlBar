@@ -1,3 +1,4 @@
 import Banner from "./Banner";
+import MatchCard from "./MatchCard";
 
-export default { Banner };
+export { Banner, MatchCard };
