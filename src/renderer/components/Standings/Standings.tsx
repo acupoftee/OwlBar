@@ -119,7 +119,6 @@ const rowRenderer = ({
         alignItems: "center"
       }}
       width="90"
-      // backgroundColor={getPrimaryColor(rowData.teamAbbName).hex}
       backgroundColor={getPrimaryColor(rowData.teamAbbName).hex}
     >
       <TeamLogo src={Logos[rowData.teamAbbName] as string} />

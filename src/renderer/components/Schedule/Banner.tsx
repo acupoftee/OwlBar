@@ -4,7 +4,8 @@ import { Flex } from "antd-mobile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { getPrimaryColor } from "owl-colors";
+// import { getPrimaryColor } from "owl-colors";
+import Colors from "../../../resources/Colors";
 
 const BannerBackground = styled.div<{
   imageUrl: string;
@@ -12,7 +13,7 @@ const BannerBackground = styled.div<{
   background-image: url(${props => props.imageUrl});
   background-size: cover;
   background-position: 100% 100%;
-  width: 100vw;
+  width: 100%;
   height: 160px;
   display: flex;
   justify-content: center;
@@ -41,11 +42,11 @@ const EventWrapper = styled(Flex)<{
 `;
 
 const EventInfo = styled(Flex)`
-  height: 35px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: 600;
   text-transform: uppercase;
   flex: 1 1 50%;
@@ -62,41 +63,45 @@ const Banner = ({
   bannerBackground,
   bannerLogo,
   host,
-  location
+  location,
+  hostId
 }: {
   bannerBackground: string;
   bannerLogo: string;
   host: string;
   location: string;
-}) => (
-  <>
-    <BannerBackground imageUrl={bannerBackground}>
-      <BannerLogo logoUrl={bannerLogo} />
-    </BannerBackground>
-    <EventWrapper background={getPrimaryColor(host).hex}>
-      <EventInfo>
-        <Content>Hosted by {host}</Content>
-      </EventInfo>
-      <EventInfo>
-        <FontAwesomeIcon
-          icon={faTicketAlt}
-          style={{
-            marginRight: "10px",
-            transformOrigin: "center",
-            transform: "rotate(-45deg)"
-          }}
-        />
-        tickets
-      </EventInfo>
-      <EventInfo>
-        <FontAwesomeIcon
-          icon={faMapMarkerAlt}
-          style={{ marginRight: "10px" }}
-        />
-        {location}
-      </EventInfo>
-    </EventWrapper>
-  </>
-);
+  hostId: number;
+}) => {
+  return (
+    <>
+      <BannerBackground imageUrl={bannerBackground}>
+        <BannerLogo logoUrl={bannerLogo} />
+      </BannerBackground>
+      <EventWrapper background={Colors[hostId]}>
+        <EventInfo>
+          <Content>Hosted by {host}</Content>
+        </EventInfo>
+        <EventInfo>
+          <FontAwesomeIcon
+            icon={faTicketAlt}
+            style={{
+              marginRight: "10px",
+              transformOrigin: "center",
+              transform: "rotate(-45deg)"
+            }}
+          />
+          tickets
+        </EventInfo>
+        <EventInfo>
+          <FontAwesomeIcon
+            icon={faMapMarkerAlt}
+            style={{ marginRight: "10px" }}
+          />
+          {location}
+        </EventInfo>
+      </EventWrapper>
+    </>
+  );
+};
 
 export default Banner;
