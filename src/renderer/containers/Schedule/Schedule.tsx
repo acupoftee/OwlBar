@@ -58,7 +58,12 @@ const Schedule = ({
             setWeek(newWeek);
           }}
         />
-        <DataSection style={{ height: "auto", marginTop: "30px" }}>
+        <DataSection
+          style={{
+            height: "auto",
+            marginTop: "30px"
+          }}
+        >
           {loading && "loading..."}
           {error && "error loading schedule"}
           {!loading && !error && (
