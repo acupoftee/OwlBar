@@ -74,6 +74,7 @@ const setWeek = (week: number): ScheduleAction => ({
 // get closest week number
 export function fetchScheduleData(week: number) {
   return (dispatch: Dispatch<ScheduleAction>, getState: ScheduleState) => {
+    dispatch(setWeek(week));
     dispatch(requestStart());
     return rp(
       "https://salty-eyrie-03841.herokuapp.com/" +

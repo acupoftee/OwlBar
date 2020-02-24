@@ -28,7 +28,7 @@ const Schedule = ({
 }) => {
   useLayoutEffect(() => {
     fetchScheduleData(1);
-  }, [fetchScheduleData]);
+  }, []);
 
   const [week, setWeek] = useState(1);
 

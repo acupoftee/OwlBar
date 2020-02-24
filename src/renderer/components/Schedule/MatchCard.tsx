@@ -7,6 +7,7 @@ import { LiveLoader } from "../Loaders";
 import Logos from "../../../resources/Logos";
 
 import { colors } from "../../styles/theme";
+import { createBrotliCompress } from "zlib";
 
 const Card = styled(Flex)`
   width: 100vw;
@@ -51,7 +52,7 @@ const MidBlock = styled(Flex)<{
   // color: black;
   // background-color: white;
   // border-top: 1px solid ${colors.liteGrey};
-  background-color: ${colors.liteGrey};
+  background-color: ${props => (props.live ? "red" : "gray")};
   color: ${colors.white};
   width: 100%;
   height: 20px;
@@ -68,36 +69,15 @@ const MidBlock = styled(Flex)<{
   }
 `;
 
-// const DateString = styled.div`
-//   margin-top: 10px;
-//   margin-left: 10px;
-//   font-weight: 500;
-//   font-size: 13px;
-// `;
-
-// const DateBorder = styled.div`
-//   margin-left: 10px;
-//   border-bottom: 3px solid orange;
-//   width: 20px;
-// `;
-
 const TeamName = styled.p`
   margin: auto 15px;
 `;
 
 export type MatchStatus = "PENDING" | "ONGOING" | "CONCLUDED";
 
-// const DateBlock = ({ startDate }: { startDate: number }) => {
-//   const time = moment(startDate).format("dddd, MMM Do");
-//   return (
-//     <MidBlock>
-//       <p style={{ fontSize: "12px" }}>{time}</p>
-//     </MidBlock>
-//   );
-// };
-
 const DateStrip = ({
   startDate,
+  live,
   status
 }: {
   startDate: number;
@@ -115,21 +95,11 @@ const DateStrip = ({
     statusText = "Final";
   }
   return (
-    <MidBlock>
+    <MidBlock live={live}>
       <p style={{ fontSize: "12px" }}>{`${date} | ${statusText}`}</p>
     </MidBlock>
   );
 };
-
-// const ScoreBlock = ({ scores, live }: { scores: number[]; live: boolean }) => {
-//   return (
-//     <MidBlock live={live}>
-//       <span>{live ? "LIVE" : ""}</span>
-//       <p>{`${scores[0]} - ${scores[1]}`}</p>
-//       {live && <LiveLoader />}
-//     </MidBlock>
-//   );
-// };
 
 const MatchCard = ({
   homeTeamAbb,
@@ -137,8 +107,7 @@ const MatchCard = ({
   status,
   scores,
   live,
-  start,
-  showDate
+  start
 }: {
   homeTeamAbb: string;
   awayTeamAbb: string;
@@ -146,7 +115,6 @@ const MatchCard = ({
   scores: number[];
   live: boolean;
   start: number;
-  showDate: boolean;
 }) => {
   return (
     <>
