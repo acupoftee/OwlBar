@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Banner from "./Banner";
 import MatchCard from "./MatchCard";
-import moment from "moment";
 
 const Wrapper = styled.div`
   width: 100%;

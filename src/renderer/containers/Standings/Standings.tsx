@@ -6,6 +6,7 @@ import * as actions from "./actions";
 import { StandingsAction } from "./actions";
 import { StandingsState } from "./types";
 import { PageBar } from "../../components/TabBar";
+import { HexLoader } from "../../components/Loaders";
 
 export interface Props {
   fetchData: () => Promise<StandingsAction>;
@@ -32,7 +33,7 @@ const Standings = ({
   return (
     <PageBar currentTab={2}>
       <DataSection>
-        {loading && "loading..."}
+        {loading && <HexLoader />}
         {error && "error loading standings"}
         {!loading && !error && <StandingsTable data={standingsData} />}
       </DataSection>

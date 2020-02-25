@@ -7,13 +7,12 @@ import { LiveLoader } from "../Loaders";
 import Logos from "../../../resources/Logos";
 
 import { colors } from "../../styles/theme";
-import { createBrotliCompress } from "zlib";
 
 const Card = styled(Flex)`
   width: 100vw;
   height: 70px;
   overflow: hidden;
-  margin-top: 5%;
+  margin-top: 4%;
   font-weight: 600;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;

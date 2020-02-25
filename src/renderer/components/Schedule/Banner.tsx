@@ -42,7 +42,7 @@ const EventWrapper = styled(Flex)<{
 `;
 
 const EventInfo = styled(Flex)`
-  height: 30px;
+  height: 28px;
   display: flex;
   justify-content: center;
   align-items: center;

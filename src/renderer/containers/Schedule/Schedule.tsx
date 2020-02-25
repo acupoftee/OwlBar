@@ -1,4 +1,4 @@
-import React, { Fragment, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { connect } from "react-redux";
 import { EventCard, DateSelector } from "../../components/Schedule";
 import DataSection from "../../components/shared/DataSection";
@@ -6,8 +6,7 @@ import * as actions from "./actions";
 import { ScheduleAction } from "./actions";
 import { ScheduleState } from "./types";
 import { PageBar } from "../../components/TabBar";
-import { Flex } from "antd-mobile";
-
+import { HexLoader } from "../../components/Loaders";
 export interface Props {
   fetchScheduleData: (week: number) => Promise<ScheduleAction>;
   loading: boolean;
@@ -64,7 +63,7 @@ const Schedule = ({
             marginTop: "30px"
           }}
         >
-          {loading && "loading..."}
+          {loading && <HexLoader />}
           {error && "error loading schedule"}
           {!loading && !error && (
             <div style={{ overflowY: "scroll" }}>

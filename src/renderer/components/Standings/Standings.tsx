@@ -49,7 +49,7 @@ const Conference = styled.h4`
   background: #141114;
   color: #fff;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
 `;
 
 const headerRowRenderer = ({
