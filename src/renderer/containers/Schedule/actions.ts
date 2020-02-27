@@ -1,3 +1,5 @@
+// @ts-ignore
+import rp from "request-promise";
 import { Dispatch } from "redux";
 import {
   SCHEDULE_REQUEST_START,
@@ -6,11 +8,6 @@ import {
   SET_WEEK
 } from "./constants";
 import { ScheduleState } from "./types";
-// import fetch from "cross-fetch";
-// @ts-ignore
-import rp from "request-promise";
-
-import getSchedule from "../../../api/ScheduleAPI";
 
 export interface ScheduleRequestStart {
   type: typeof SCHEDULE_REQUEST_START;
@@ -68,22 +65,16 @@ const setWeek = (week: number): ScheduleAction => ({
   week
 });
 
-// grab schedule endpoint
-// use week 1
-// 2nd approach:
-// get closest week number
 export function fetchScheduleData(week: number) {
   return (dispatch: Dispatch<ScheduleAction>, getState: ScheduleState) => {
     dispatch(setWeek(week));
     dispatch(requestStart());
-    return rp(
-      "https://salty-eyrie-03841.herokuapp.com/" +
-        `https://owl-bar-api.herokuapp.com/schedule/week/${week}`,
-      {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000"
-      }
-    )
+    return rp(`http://owl-bar-api.herokuapp.com/schedule/week/${week}`, {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With",
+      Origin: "overwatchleague.com"
+    })
       .then((json: string) => JSON.parse(json))
       .then((schedule: any) => dispatch(requestSuccess(schedule.content)))
       .catch((err: any) => dispatch(requestFailure(err)));

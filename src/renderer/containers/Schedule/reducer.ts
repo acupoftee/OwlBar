@@ -6,13 +6,14 @@ import {
 } from "./constants";
 import { ScheduleAction } from "./actions";
 import { ScheduleState } from "./types";
+import getCurrentWeek from "./date";
 
 const initialState: ScheduleState = {
   loading: true,
   error: false,
   scheduleData: [],
   message: "",
-  week: 1
+  week: getCurrentWeek()
 };
 
 export default function reducer(

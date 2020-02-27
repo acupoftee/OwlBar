@@ -6,36 +6,37 @@ import MatchCard from "./MatchCard";
 const Wrapper = styled.div`
   width: 100%;
   height: auto;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 `;
 
-const EventCard = ({
-  bannerBackground,
-  bannerLogo,
-  host,
-  hostId,
-  location,
-  matches
-}: {
+interface BannerProps {
   bannerBackground: string;
   bannerLogo: string;
   host: string;
   hostId: number;
   location: string;
+}
+const EventCard = ({
+  bannerProps,
+  matches
+}: {
+  bannerProps: BannerProps;
   matches: [];
 }) => {
+  // If no banner's avaialble, this means the next event
+  // is held in the same venue
   return (
     <Wrapper>
-      {bannerBackground && (
+      {bannerProps.bannerBackground && (
         <Banner
-          bannerBackground={bannerBackground}
-          bannerLogo={bannerLogo}
-          host={host}
-          location={location}
-          hostId={hostId}
+          bannerBackground={bannerProps.bannerBackground}
+          bannerLogo={bannerProps.bannerLogo}
+          host={bannerProps.host}
+          location={bannerProps.location}
+          hostId={bannerProps.hostId}
         />
       )}
-      <div style={{ transform: "scale(0.95)" }}>
+      <div style={{ transform: "scale(0.95)", marginTop: "-8px" }}>
         {matches.map((match: any) => (
           <MatchCard
             key={match.id}

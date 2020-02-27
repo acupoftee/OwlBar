@@ -1,4 +1,5 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect } from "react";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import { EventCard, DateSelector } from "../../components/Schedule";
 import DataSection from "../../components/shared/DataSection";
@@ -7,38 +8,54 @@ import { ScheduleAction } from "./actions";
 import { ScheduleState } from "./types";
 import { PageBar } from "../../components/TabBar";
 import { HexLoader } from "../../components/Loaders";
+import { colors } from "../../styles/theme";
+
+const Divider = styled.hr`
+  margin: 0 25px 20px 25px;
+`;
 export interface Props {
   fetchScheduleData: (week: number) => Promise<ScheduleAction>;
   loading: boolean;
   error: boolean;
   scheduleData: any;
+  week: number;
 }
 
 const Schedule = ({
   fetchScheduleData,
   error,
   loading,
-  scheduleData
+  scheduleData,
+  week
 }: {
   fetchScheduleData: (week: number) => Promise<ScheduleAction>;
   loading: boolean;
   error: boolean;
   scheduleData: any;
+  week: number;
 }) => {
   useLayoutEffect(() => {
-    fetchScheduleData(1);
+    fetchScheduleData(week);
   }, []);
 
-  const [week, setWeek] = useState(1);
-
   const addWeek = (week: number) => {
-    const newWeek = week < 27 ? week++ : 27;
-    return week;
+    let newWeek = week;
+    if (week < 27) {
+      newWeek++;
+    } else {
+      newWeek = 27;
+    }
+    return newWeek;
   };
 
   const subWeek = (week: number) => {
-    const newWeek = week > 1 ? week-- : 1;
-    return week;
+    let newWeek = week;
+    if (week > 1) {
+      newWeek--;
+    } else {
+      newWeek = 1;
+    }
+    return newWeek;
   };
 
   return (
@@ -49,12 +66,10 @@ const Schedule = ({
           addWeek={() => {
             const newWeek = addWeek(week);
             fetchScheduleData(newWeek);
-            setWeek(newWeek);
           }}
           subWeek={() => {
             const newWeek = subWeek(week);
             fetchScheduleData(newWeek);
-            setWeek(newWeek);
           }}
         />
         <DataSection
@@ -69,35 +84,22 @@ const Schedule = ({
             <div style={{ overflowY: "scroll" }}>
               {scheduleData.tableData.events.map((event: any, idx: number) => {
                 return (
-                  <EventCard
-                    key={idx}
-                    bannerBackground={
-                      event.eventBanner === null
-                        ? ""
-                        : event.eventBanner.backgroundImageUrl
-                    }
-                    bannerLogo={
-                      event.eventBanner === null
-                        ? ""
-                        : event.eventBanner.featuredImage
-                    }
-                    host={
-                      event.eventBanner === null
-                        ? ""
-                        : event.eventBanner.hostingTeam.shortName
-                    }
-                    hostId={
-                      event.eventBanner === null
-                        ? ""
-                        : event.eventBanner.hostingTeam.teamId
-                    }
-                    location={
-                      event.eventBanner === null
-                        ? ""
-                        : event.eventBanner.venue.title
-                    }
-                    matches={event.matches}
-                  />
+                  <>
+                    <EventCard
+                      key={idx}
+                      bannerProps={{
+                        bannerBackground: event.eventBanner?.backgroundImageUrl,
+                        bannerLogo: event.eventBanner?.featuredImage,
+                        host: event.eventBanner?.hostingTeam.shortName,
+                        hostId: event.eventBanner?.hostingTeam.teamId,
+                        location: event.eventBanner?.venue.title
+                      }}
+                      matches={event.matches}
+                    />
+                    {idx !== scheduleData.tableData.events.length - 1 && (
+                      <Divider key={idx + 1} />
+                    )}
+                  </>
                 );
               })}
             </div>
@@ -111,7 +113,8 @@ const Schedule = ({
 const mapStateToProps = ({ schedule }: { schedule: ScheduleState }): any => ({
   loading: schedule.loading,
   error: schedule.error,
-  scheduleData: schedule.scheduleData
+  scheduleData: schedule.scheduleData,
+  week: schedule.week
 });
 
 export default connect<ScheduleState, Props>(

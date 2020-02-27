@@ -4,7 +4,6 @@ import configureStore from './renderer/store'
 import Standings from './renderer/containers/Standings'
 import GlobalStyle from './renderer/styles/global'
 import Schedule from './renderer/containers/Schedule'
-import { HexLoader } from './renderer/components/Loaders'
 
 const store = configureStore()
 function App() {

@@ -4,7 +4,6 @@ import { Flex } from "antd-mobile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 
-// import { getPrimaryColor } from "owl-colors";
 import Colors from "../../../resources/Colors";
 
 const BannerBackground = styled.div<{
