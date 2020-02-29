@@ -4,8 +4,7 @@ Date.prototype.getWeek = function() {
   const seasonStartDate = new Date(this.getFullYear(), 1, 6);
   return Math.ceil(
     ((this.getTime() - seasonStartDate.getTime()) / 86400000 +
-      seasonStartDate.getDay() +
-      1) /
+      seasonStartDate.getDay()) /
       7
   );
 };
