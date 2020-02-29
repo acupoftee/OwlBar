@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Flex, Icon } from "antd-mobile";
 
 import { colors } from "../../styles/theme";
@@ -14,8 +14,16 @@ const Wrapper = styled.div`
   color: ${colors.white};
 `;
 
-const Button = styled(Icon)`
+const Button = styled(Icon)<{
+  disabled?: boolean;
+}>`
   cursor: pointer;
+  ${props =>
+    props.disabled &&
+    css`
+      pointer-events: none;
+      color: ${colors.liteGrey};
+    `}
 `;
 
 const Item = styled(Flex.Item)`
@@ -30,19 +38,23 @@ const Date = styled.p`
 const DateSelector = ({
   date,
   addWeek,
-  subWeek
+  subWeek,
+  disableAdd,
+  disableSub
 }: {
   date: number;
   addWeek: () => void;
   subWeek: () => void;
+  disableAdd?: boolean;
+  disableSub?: boolean;
 }) => (
   <Wrapper>
     <Flex>
-      <Button type="left" onClick={subWeek} />
+      <Button type="left" onClick={subWeek} disabled={disableSub} />
       <Item>
         <Date>{`Week ${date}`}</Date>
       </Item>
-      <Button type="right" onClick={addWeek} />
+      <Button type="right" onClick={addWeek} disabled={disableAdd} />
     </Flex>
   </Wrapper>
 );

@@ -8,7 +8,6 @@ import { ScheduleAction } from "./actions";
 import { ScheduleState } from "./types";
 import { PageBar } from "../../components/TabBar";
 import { HexLoader } from "../../components/Loaders";
-import { colors } from "../../styles/theme";
 
 const Divider = styled.hr`
   margin: 0 25px 20px 25px;
@@ -71,6 +70,8 @@ const Schedule = ({
             const newWeek = subWeek(week);
             fetchScheduleData(newWeek);
           }}
+          disableAdd={week === 27}
+          disableSub={week === 1}
         />
         <DataSection
           style={{
