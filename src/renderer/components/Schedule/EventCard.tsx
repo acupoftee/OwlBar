@@ -17,40 +17,36 @@ interface BannerProps {
   location: string;
 }
 const EventCard = ({
-  bannerProps,
+  bannerProps, 
   matches
 }: {
   bannerProps: BannerProps;
   matches: [];
-}) => {
-  // If no banner's avaialble, this means the next event
-  // is held in the same venue
-  return (
-    <Wrapper>
-      {bannerProps.bannerBackground && (
-        <Banner
-          bannerBackground={bannerProps.bannerBackground}
-          bannerLogo={bannerProps.bannerLogo}
-          host={bannerProps.host}
-          location={bannerProps.location}
-          hostId={bannerProps.hostId}
+}) => (
+  <Wrapper>
+    {bannerProps.bannerBackground && (
+      <Banner
+        bannerBackground={bannerProps.bannerBackground}
+        bannerLogo={bannerProps.bannerLogo}
+        host={bannerProps.host}
+        location={bannerProps.location}
+        hostId={bannerProps.hostId}
+      />
+    )}
+    <div style={{ transform: "scale(0.95)", marginTop: "-8px" }}>
+      {matches.map((match: any) => (
+        <MatchCard
+          key={match.id}
+          homeTeamAbb={match.competitors[0].abbreviatedName}
+          awayTeamAbb={match.competitors[1].abbreviatedName}
+          status={match.status}
+          scores={match.scores}
+          live={match.live}
+          start={match.startDate}
         />
-      )}
-      <div style={{ transform: "scale(0.95)", marginTop: "-8px" }}>
-        {matches.map((match: any) => (
-          <MatchCard
-            key={match.id}
-            homeTeamAbb={match.competitors[0].abbreviatedName}
-            awayTeamAbb={match.competitors[1].abbreviatedName}
-            status={match.status}
-            scores={match.scores}
-            live={match.live}
-            start={match.startDate}
-          />
-        ))}
-      </div>
-    </Wrapper>
-  );
-};
+      ))}
+    </div>
+  </Wrapper>
+);
 
 export default EventCard;
