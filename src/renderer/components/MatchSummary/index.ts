@@ -1,3 +1,5 @@
 import GameCard from "./GameCard";
+import SummaryBanner from "./SummaryBanner";
+import BackToSchedule from "./BackToSchedule";
 
-export { GameCard };
+export { GameCard, SummaryBanner, BackToSchedule };

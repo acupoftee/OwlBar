@@ -17,12 +17,6 @@ const Card = styled(Flex)`
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
   flex-direction: column;
-
-  &:hover {
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-    transform: translate3d(0, -3px, 3px);
-    cursor: pointer;
-  }
 `;
 
 const Team = styled(Flex)<{
@@ -45,12 +39,9 @@ const TeamLogo = styled.img`
   user-drag: none;
 `;
 
-const MidBlock = styled(Flex)<{
-  live?: boolean;
+const DateBar = styled(Flex)<{
+  live: boolean;
 }>`
-  // color: black;
-  // background-color: white;
-  // border-top: 1px solid ${colors.liteGrey};
   background-color: ${props => (props.live ? "red" : "gray")};
   color: ${colors.white};
   width: 100%;
@@ -94,9 +85,9 @@ const DateStrip = ({
     statusText = "Final";
   }
   return (
-    <MidBlock live={live}>
+    <DateBar live={live}>
       <p style={{ fontSize: "12px" }}>{`${date} | ${statusText}`}</p>
-    </MidBlock>
+    </DateBar>
   );
 };
 

@@ -8,7 +8,7 @@ import Logos from "../../../resources/Logos";
 const MapCard = styled(Flex)`
   width: 100vw;
   height: auto;
-  margin-top: 4%;
+  margin-bottom: 4%;
   font-weight: 600;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
@@ -22,8 +22,8 @@ const MapImageCover = styled.div<{
   width: 100%;
   background-image: linear-gradient(
       to top,
-      rgb(0, 8, 12, 0.5) 100%,
-      transparent
+      rgb(0, 8, 12, 0.6) 100%,
+      transparent 0%
     ),
     url(${props => props.mapImageUrl});
   background-size: cover;
@@ -32,7 +32,8 @@ const MapImageCover = styled.div<{
   color: white;
   text-align: center;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 800;
   text-shadow: 0 1px black;
   border-bottom: 5px solid ${colors.orange};
   p {
@@ -73,6 +74,7 @@ const MapBar = styled(Flex)`
   font-size: 10px;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
 `;
 
 type GameProps = {
@@ -82,12 +84,12 @@ type GameProps = {
   mapImage: string;
   mapName: string;
   mapNumber: number;
+  mapType: string;
 };
 
 const GameCard = (props: GameProps) => (
   <MapCard>
-    <MapBar>{`Map ${props.mapNumber}: Hybrid`}</MapBar>
-    {/* <MapBar>{`Map ${props.mapNumber}: ${props.mapName}`}</MapBar> */}
+    <MapBar>{`Map ${props.mapNumber} | ${props.mapType}`}</MapBar>
     <MapImageCover mapImageUrl={props.mapImage}>
       <p>{props.mapName}</p>
     </MapImageCover>
@@ -103,37 +105,6 @@ const GameCard = (props: GameProps) => (
         <TeamName>{props.awayTeam}</TeamName>
       </Team>
     </Flex>
-    {/* <Flex
-      direction="row"
-      justify="between"
-      style={{ width: "100%", height: "100%" }}
-    >
-      <div style={{ flex: "1 1 0%" }}>
-        <TeamStrip>
-          <TeamName>
-            <img src={props.homeLogo} alt={props.homeTeam} />
-            <span>{props.homeTeam}</span>
-          </TeamName>
-          <span>{props.scores[0]}</span>
-        </TeamStrip>
-        <TeamStrip>
-          <TeamName>
-            <img src={props.awayLogo} alt={props.awayTeam} />
-            <span>{props.awayTeam}</span>
-          </TeamName>
-          <span>{props.scores[1]}</span>
-        </TeamStrip>
-      </div>
-      <div
-        style={{
-          backgroundColor: "pink",
-          width: "90px",
-          height: "100%"
-        }}
-      >
-        <p>{props.mapName}</p>
-      </div>
-    </Flex> */}
   </MapCard>
 );
 
