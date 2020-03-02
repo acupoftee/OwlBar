@@ -35,7 +35,7 @@ const MapImageCover = styled.div<{
   font-size: 22px;
   font-weight: 800;
   text-shadow: 0 1px black;
-  border-bottom: 5px solid ${colors.orange};
+  border-bottom: 3px solid ${colors.orange};
   p {
     margin-top: 10%;
   }
@@ -69,7 +69,7 @@ const MapBar = styled(Flex)`
   background-color: black;
   color: ${colors.white};
   width: 100%;
-  height: 18px;
+  height: 25px;
   text-transform: uppercase;
   font-size: 10px;
   justify-content: center;
@@ -89,7 +89,7 @@ type GameProps = {
 
 const GameCard = (props: GameProps) => (
   <MapCard>
-    <MapBar>{`Map ${props.mapNumber} | ${props.mapType}`}</MapBar>
+    <MapBar>{`Map ${props.mapNumber} - ${props.mapType}`}</MapBar>
     <MapImageCover mapImageUrl={props.mapImage}>
       <p>{props.mapName}</p>
     </MapImageCover>
