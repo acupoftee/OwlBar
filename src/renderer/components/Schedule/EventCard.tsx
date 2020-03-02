@@ -17,7 +17,7 @@ interface BannerProps {
   location: string;
 }
 const EventCard = ({
-  bannerProps, 
+  bannerProps,
   matches
 }: {
   bannerProps: BannerProps;
