@@ -3,6 +3,7 @@ import { Flex } from 'antd-mobile'
 import { Table as VirtualizedTable } from 'react-virtualized'
 import { getPrimaryColor } from 'owl-colors'
 import styled from 'styled-components'
+import { colors } from '../../styles/theme'
 
 import Logos from '../../../resources/Logos'
 
@@ -43,14 +44,16 @@ const TeamLogo = styled.img`
   padding-right: 10px;
 `
 
-const Conference = styled.h4`
-  padding: 10px 0;
-  margin: 0;
-  background: #141114;
-  color: #fff;
-  text-align: center;
-  text-transform: capitalize;
-`
+// const Conference = styled.h4`
+//   padding: 10px 0;
+//   margin: 0;
+//   // background: #141114;
+//   background-color: ${colors.black};
+//   color: #fff;
+//   font-weight: 100;
+//   text-align: center;
+//   text-transform: capitalize;
+// `
 
 const headerRowRenderer = ({
   className,
@@ -151,10 +154,9 @@ const rowRenderer = ({
 
 const standingsTable = (teams: any) => (
   <div style={{ width: '100%' }}>
-    <Conference>Standings</Conference>
     <VirtualizedTable
       width={300}
-      height={357}
+      height={360}
       headerHeight={30}
       rowHeight={30}
       rowCount={teams.length}
