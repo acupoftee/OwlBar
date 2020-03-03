@@ -73,12 +73,7 @@ const Schedule = ({
           disableAdd={week === 27}
           disableSub={week === 1}
         />
-        <DataSection
-        // style={{
-        //   height: 'auto',
-        //   marginTop: '30px',
-        // }}
-        >
+        <DataSection>
           {loading && <HexLoader />}
           {error && 'error loading schedule'}
           {!loading && !error && (

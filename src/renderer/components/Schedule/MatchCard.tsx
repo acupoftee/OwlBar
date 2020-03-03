@@ -17,6 +17,11 @@ const Card = styled(Flex)`
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
   flex-direction: column;
+
+  &:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+    transform: translate3d(0, -3px, 3px);
+  }
 `
 
 const Team = styled(Flex)<{

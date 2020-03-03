@@ -14,7 +14,6 @@ const Conference = styled.div`
   padding: 7px;
   width: 100vw;
   height: 35px;
-  // background: #141114;
   background-color: ${colors.black};
   color: #fff;
   font-weight: 100;
