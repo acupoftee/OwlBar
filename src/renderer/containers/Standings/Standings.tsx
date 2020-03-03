@@ -1,4 +1,4 @@
-import React, { Fragment, useLayoutEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { connect } from 'react-redux'
 import { StandingsTable } from '../../components/Standings'
 import DataSection from '../../components/shared/DataSection'
@@ -33,7 +33,7 @@ const Standings = ({
   return (
     <PageBar currentTab={2}>
       <DataSection>
-        {loading && <HexLoader />}
+        {loading && <HexLoader style={{ position: 'relative', left: '28%' }} />}
         {error && 'error loading standings'}
         {!loading && !error && <StandingsTable data={standingsData} />}
       </DataSection>

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { TabBar, Flex } from 'antd-mobile'
 
@@ -38,50 +38,50 @@ const PageBar = ({
 }: {
   currentTab: number
   children: React.ReactNode
-}) => (
-  <Layout>
-    <TabBar
-      tintColor={colors.white}
-      barTintColor={colors.black}
-      unselectedTintColor={colors.liteGrey}
-    >
-      <TabBar.Item
-        key="Schedule"
-        title={((<Title>Schedule</Title>) as any) as string}
-        selected={currentTab === 1}
-        icon={<Icon url={calendarGreyIcon} />}
-        selectedIcon={<Icon url={calendarWhiteIcon} />}
-        onPress={() => {}}
+}) => {
+  const history = useHistory()
+  return (
+    <Layout>
+      <TabBar
+        tintColor={colors.white}
+        barTintColor={colors.black}
+        unselectedTintColor={colors.liteGrey}
       >
-        <Content direction="column">{currentTab === 1 && children}</Content>
-      </TabBar.Item>
-      <TabBar.Item
-        key="Standings"
-        title={((<Title>Standings</Title>) as any) as string}
-        selected={currentTab === 2}
-        icon={<Icon url={trophyBlackIcon} />}
-        selectedIcon={<Icon url={trophyWhiteIcon} />}
-        onPress={() => {}}
-      >
-        <Content direction="column">{currentTab === 2 && children}</Content>
-      </TabBar.Item>
-      <TabBar.Item
-        key="Settings"
-        title={((<Title>Settings</Title>) as any) as string}
-        selected={currentTab === 3}
-        icon={<Icon url={settingsBlackIcon} />}
-        selectedIcon={<Icon url={settingsWhiteIcon} />}
-        onPress={() => {}}
-      >
-        <Content direction="column">{currentTab === 3 && children}</Content>
-      </TabBar.Item>
-    </TabBar>
-  </Layout>
-)
-
-PageBar.propTypes = {
-  currentTab: PropTypes.number.isRequired,
-  children: PropTypes.element,
+        <TabBar.Item
+          key="Schedule"
+          title={((<Title>Schedule</Title>) as any) as string}
+          selected={currentTab === 1}
+          icon={<Icon url={calendarGreyIcon} />}
+          selectedIcon={<Icon url={calendarWhiteIcon} />}
+          onPress={() => history.push('/')}
+          // onPress={() => {}}
+        >
+          <Content direction="column">{currentTab === 1 && children}</Content>
+        </TabBar.Item>
+        <TabBar.Item
+          key="Standings"
+          title={((<Title>Standings</Title>) as any) as string}
+          selected={currentTab === 2}
+          icon={<Icon url={trophyBlackIcon} />}
+          selectedIcon={<Icon url={trophyWhiteIcon} />}
+          onPress={() => history.push('/standings')}
+          // onPress={() => {}}
+        >
+          <Content direction="column">{currentTab === 2 && children}</Content>
+        </TabBar.Item>
+        <TabBar.Item
+          key="Settings"
+          title={((<Title>Settings</Title>) as any) as string}
+          selected={currentTab === 3}
+          icon={<Icon url={settingsBlackIcon} />}
+          selectedIcon={<Icon url={settingsWhiteIcon} />}
+          onPress={() => {}}
+        >
+          <Content direction="column">{currentTab === 3 && children}</Content>
+        </TabBar.Item>
+      </TabBar>
+    </Layout>
+  )
 }
 
 PageBar.defaultProps = {

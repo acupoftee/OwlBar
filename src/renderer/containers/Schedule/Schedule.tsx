@@ -74,15 +74,17 @@ const Schedule = ({
           disableSub={week === 1}
         />
         <DataSection
-          style={{
-            height: 'auto',
-            marginTop: '30px',
-          }}
+        // style={{
+        //   height: 'auto',
+        //   marginTop: '30px',
+        // }}
         >
           {loading && <HexLoader />}
           {error && 'error loading schedule'}
           {!loading && !error && (
-            <div style={{ overflowY: 'scroll' }}>
+            <div
+              style={{ overflowY: 'scroll', height: 'auto', marginTop: '30px' }}
+            >
               {scheduleData.tableData.events.map((event: any, idx: number) => {
                 return (
                   <>

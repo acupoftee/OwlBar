@@ -80,7 +80,7 @@ const MapBar = styled(Flex)`
 type GameProps = {
   homeTeam: string
   awayTeam: string
-  scores: number[]
+  scores?: number[]
   mapImage: string
   mapName: string
   mapNumber: number
@@ -97,10 +97,10 @@ const GameCard = (props: GameProps) => (
       <Team background={getPrimaryColor(props.homeTeam).hex}>
         <TeamName>{props.homeTeam}</TeamName>
         <TeamLogo src={Logos[props.homeTeam] as string} />
-        <span>{props.scores[0]}</span>
+        {props.scores && <span>{props.scores[0]}</span>}
       </Team>
       <Team background={getPrimaryColor(props.awayTeam).hex}>
-        <span>{props.scores[1]}</span>
+        {props.scores && <span>{props.scores[1]}</span>}
         <TeamLogo src={Logos[props.awayTeam] as string} />
         <TeamName>{props.awayTeam}</TeamName>
       </Team>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import Banner from './Banner'
 import MatchCard from './MatchCard'
 
@@ -34,17 +35,24 @@ const EventCard = ({
       />
     )}
     <div style={{ transform: 'scale(0.95)', marginTop: '-8px' }}>
-      {matches.map((match: any) => (
-        <MatchCard
-          key={match.id}
-          homeTeamAbb={match.competitors[0].abbreviatedName}
-          awayTeamAbb={match.competitors[1].abbreviatedName}
-          status={match.status}
-          scores={match.scores}
-          live={match.live}
-          start={match.startDate}
-        />
-      ))}
+      {matches.map((match: any) => {
+        const content = (
+          <MatchCard
+            key={match.id}
+            homeTeamAbb={match.competitors[0].abbreviatedName}
+            awayTeamAbb={match.competitors[1].abbreviatedName}
+            status={match.status}
+            scores={match.scores}
+            live={match.live}
+            start={match.startDate}
+          />
+        )
+        return match.status === 'PENDING' ? (
+          <div>{content}</div>
+        ) : (
+          <Link to={`/match/${match.id}`}>{content}</Link>
+        )
+      })}
     </div>
   </Wrapper>
 )

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import { Flex } from 'antd-mobile'
 
 const timing = '3s'
 
@@ -40,11 +41,19 @@ const animateHex = keyframes`
   }
 `
 
+const HexContainer = styled(Flex)`
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+`
+
 const HexBorder = styled.div`
-  position: absolute;
-  transform: translate(-50%, -50%) scale(0.4);
-  left: 50%;
-  top: 50%;
+  // position: absolute;
+  transform-origin: center;
+  transform: scale(0.4);
+  // left: 50%;
+  // top: 50%;
   width: 170px;
   height: 170px;
   border: 2px solid #ebedf1;
@@ -161,28 +170,19 @@ const Hexagon = styled.div`
 `
 
 const HexLoader = () => (
-  <HexBorder>
-    <Hexagons>
-      <Hexagon />
-      <Hexagon />
-      <Hexagon />
-      <Hexagon />
-      <Hexagon />
-      <Hexagon />
-      <Hexagon />
-    </Hexagons>
-  </HexBorder>
-  // <div class="hex-border">
-  //   <div class="hexagons">
-  //     <div class="hexagon"></div>
-  //     <div class="hexagon"></div>
-  //     <div class="hexagon"></div>
-  //     <div class="hexagon"></div>
-  //     <div class="hexagon"></div>
-  //     <div class="hexagon"></div>
-  //     <div class="hexagon"></div>
-  //   </div>
-  // </div>
+  <HexContainer>
+    <HexBorder>
+      <Hexagons>
+        <Hexagon />
+        <Hexagon />
+        <Hexagon />
+        <Hexagon />
+        <Hexagon />
+        <Hexagon />
+        <Hexagon />
+      </Hexagons>
+    </HexBorder>
+  </HexContainer>
 )
 
 export default HexLoader

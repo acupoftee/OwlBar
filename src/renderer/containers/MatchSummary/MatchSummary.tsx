@@ -1,4 +1,5 @@
 import React, { useLayoutEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
   GameCard,
@@ -31,8 +32,9 @@ const Match = ({
   error: boolean
   matchData: any
 }) => {
+  const { id } = useParams()
   useLayoutEffect(() => {
-    fetchMatchData(31010)
+    fetchMatchData(id)
   }, [])
 
   return (

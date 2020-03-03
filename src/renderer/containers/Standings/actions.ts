@@ -1,6 +1,4 @@
 // @ts-ignore
-import $ from 'cheerio'
-// @ts-ignore
 import rp from 'request-promise'
 import { Dispatch } from 'redux'
 import { REQUEST_START, REQUEST_SUCCESS, REQUEST_FAILURE } from './constants'
