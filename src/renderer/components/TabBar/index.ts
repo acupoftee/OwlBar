@@ -1,3 +1,3 @@
-import PageBar from "./TabBar";
+import PageBar from './TabBar'
 
-export { PageBar };
+export { PageBar }

@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import { colors, fonts } from "./theme";
-import "antd-mobile/dist/antd-mobile.css";
+import { createGlobalStyle } from 'styled-components'
+import { colors, fonts } from './theme'
+import 'antd-mobile/dist/antd-mobile.css'
 
 /* eslint no-unused-expressions: 0 */
 const GlobalStyle = createGlobalStyle`
@@ -26,6 +26,6 @@ const GlobalStyle = createGlobalStyle`
       display: none;
     }
   }
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

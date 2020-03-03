@@ -1,13 +1,13 @@
-import { REQUEST_START, REQUEST_SUCCESS, REQUEST_FAILURE } from "./constants";
-import { StandingsAction } from "./actions";
-import { StandingsState } from "./types";
+import { REQUEST_START, REQUEST_SUCCESS, REQUEST_FAILURE } from './constants'
+import { StandingsAction } from './actions'
+import { StandingsState } from './types'
 
 const initialState: StandingsState = {
   loading: true,
   error: false,
   standingsData: [],
-  message: ""
-};
+  message: '',
+}
 
 export default function reducer(
   state = initialState,
@@ -18,26 +18,26 @@ export default function reducer(
       return {
         ...state,
         loading: true,
-        error: false
-      };
+        error: false,
+      }
     }
     case REQUEST_SUCCESS: {
       return {
         ...state,
         loading: false,
         error: false,
-        standingsData: action.standingsData
-      };
+        standingsData: action.standingsData,
+      }
     }
     case REQUEST_FAILURE: {
       return {
         ...state,
         loading: false,
         error: true,
-        message: action.message
-      };
+        message: action.message,
+      }
     }
     default:
-      return state;
+      return state
   }
 }

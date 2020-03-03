@@ -1,3 +1,3 @@
-import Standings from "./Standings";
+import Standings from './Standings'
 
-export default Standings;
+export default Standings

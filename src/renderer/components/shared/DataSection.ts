@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const DataSection = styled.section`
   display: flex;
@@ -7,6 +7,6 @@ const DataSection = styled.section`
   width: 100%;
   height: 100%;
   overflow-y: scroll !important;
-`;
+`
 
-export default DataSection;
+export default DataSection

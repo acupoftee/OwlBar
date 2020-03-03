@@ -1,17 +1,17 @@
 import {
   MATCH_REQUEST_START,
   MATCH_REQUEST_SUCCESS,
-  MATCH_REQUEST_FAILURE
-} from "./constants";
-import { MatchAction } from "./actions";
-import { MatchState } from "./types";
+  MATCH_REQUEST_FAILURE,
+} from './constants'
+import { MatchAction } from './actions'
+import { MatchState } from './types'
 
 const initialState: MatchState = {
   loading: true,
   error: false,
   matchData: {},
-  message: ""
-};
+  message: '',
+}
 
 export default function reducer(
   state = initialState,
@@ -22,26 +22,26 @@ export default function reducer(
       return {
         ...state,
         loading: true,
-        error: false
-      };
+        error: false,
+      }
     }
     case MATCH_REQUEST_SUCCESS: {
       return {
         ...state,
         loading: false,
         error: false,
-        matchData: action.matchData
-      };
+        matchData: action.matchData,
+      }
     }
     case MATCH_REQUEST_FAILURE: {
       return {
         ...state,
         loading: false,
         error: true,
-        message: action.message
-      };
+        message: action.message,
+      }
     }
     default:
-      return state;
+      return state
   }
 }

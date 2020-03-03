@@ -1,3 +1,3 @@
-import StandingsTable from "./Standings";
+import StandingsTable from './Standings'
 
-export { StandingsTable };
+export { StandingsTable }

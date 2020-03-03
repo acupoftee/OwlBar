@@ -1,19 +1,19 @@
-import React from "react";
-import { Flex } from "antd-mobile";
-import { Table as VirtualizedTable } from "react-virtualized";
-import { getPrimaryColor } from "owl-colors";
-import styled from "styled-components";
+import React from 'react'
+import { Flex } from 'antd-mobile'
+import { Table as VirtualizedTable } from 'react-virtualized'
+import { getPrimaryColor } from 'owl-colors'
+import styled from 'styled-components'
 
-import Logos from "../../../resources/Logos";
+import Logos from '../../../resources/Logos'
 
 const Wrapper = styled(Flex)`
   width: 100%;
   height: 100%;
   overflow-y: scroll !important;
-`;
+`
 
 const HeaderCell = styled.div<{
-  width: string;
+  width: string
 }>`
   width: ${props => props.width}px;
   padding: 8px 14px;
@@ -23,25 +23,25 @@ const HeaderCell = styled.div<{
   font-weight: 600;
   text-align: center;
   text-transform: capitalize;
-`;
+`
 
 const Cell = styled.div<{
-  width: string;
-  align?: "left" | "right";
-  backgroundColor?: string;
+  width: string
+  align?: 'left' | 'right'
+  backgroundColor?: string
 }>`
   display: inline-block;
   width: ${props => props.width}px;
   padding: 6px 14px;
   border-bottom: 2px solid #e2e2e2;
-  text-align: ${props => props.align || "center"};
-  background-color: ${props => props.backgroundColor || "transparent"};
-`;
+  text-align: ${props => props.align || 'center'};
+  background-color: ${props => props.backgroundColor || 'transparent'};
+`
 
 const TeamLogo = styled.img`
   width: 25px;
   padding-right: 10px;
-`;
+`
 
 const Conference = styled.h4`
   padding: 10px 0;
@@ -50,14 +50,14 @@ const Conference = styled.h4`
   color: #fff;
   text-align: center;
   text-transform: capitalize;
-`;
+`
 
 const headerRowRenderer = ({
   className,
-  style
+  style,
 }: {
-  className: string;
-  style: React.CSSProperties;
+  className: string
+  style: React.CSSProperties
 }) => (
   <Flex className={className} style={style}>
     <HeaderCell key="team" width="90">
@@ -76,47 +76,47 @@ const headerRowRenderer = ({
       diff
     </HeaderCell>
   </Flex>
-);
+)
 
 const ordinal = (number: number) => {
-  const i = number % 10;
-  const j = number % 100;
+  const i = number % 10
+  const j = number % 100
   if (i === 1 && j !== 11) {
-    return number + "st";
+    return number + 'st'
   } else if (i === 2 && j !== 12) {
-    return number + "nd";
+    return number + 'nd'
   } else if (i === 3 && j !== 13) {
-    return number + "rd";
+    return number + 'rd'
   } else {
-    return number + "th";
+    return number + 'th'
   }
-};
+}
 
 const getDiffColor = (diff: string) => {
-  if (diff[0] === "+") {
-    return "#007a00";
-  } else if (diff[0] === "-") {
-    return "#e50e47";
+  if (diff[0] === '+') {
+    return '#007a00'
+  } else if (diff[0] === '-') {
+    return '#e50e47'
   } else {
-    return "#000";
+    return '#000'
   }
-};
+}
 const rowRenderer = ({
   rowData,
-  style
+  style,
 }: {
-  rowData: any;
-  style: React.CSSProperties;
+  rowData: any
+  style: React.CSSProperties
 }) => (
   <Flex key={rowData.id} style={style}>
     <Cell
       key="name"
       align="left"
       style={{
-        color: "#fff",
+        color: '#fff',
         fontWeight: 500,
-        display: "flex",
-        alignItems: "center"
+        display: 'flex',
+        alignItems: 'center',
       }}
       width="90"
       backgroundColor={getPrimaryColor(rowData.teamAbbName).hex}
@@ -141,16 +141,16 @@ const rowRenderer = ({
       width="50"
       align="right"
       style={{
-        color: getDiffColor(rowData.diff)
+        color: getDiffColor(rowData.diff),
       }}
     >
       {rowData.diff}
     </Cell>
   </Flex>
-);
+)
 
 const standingsTable = (teams: any) => (
-  <div style={{ width: "100%" }}>
+  <div style={{ width: '100%' }}>
     <Conference>Standings</Conference>
     <VirtualizedTable
       width={300}
@@ -163,12 +163,12 @@ const standingsTable = (teams: any) => (
       rowRenderer={rowRenderer}
     />
   </div>
-);
+)
 
 const StandingsTable = (teams: any) => (
   <Wrapper direction="column" align="center">
     {standingsTable(teams.data)}
   </Wrapper>
-);
+)
 
-export default StandingsTable;
+export default StandingsTable

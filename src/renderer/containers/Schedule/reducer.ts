@@ -2,19 +2,19 @@ import {
   SCHEDULE_REQUEST_START,
   SCHEDULE_REQUEST_SUCCESS,
   SCHEDULE_REQUEST_FAILURE,
-  SET_WEEK
-} from "./constants";
-import { ScheduleAction } from "./actions";
-import { ScheduleState } from "./types";
-import getCurrentWeek from "./date";
+  SET_WEEK,
+} from './constants'
+import { ScheduleAction } from './actions'
+import { ScheduleState } from './types'
+import getCurrentWeek from './date'
 
 const initialState: ScheduleState = {
   loading: true,
   error: false,
   scheduleData: [],
-  message: "",
-  week: getCurrentWeek()
-};
+  message: '',
+  week: getCurrentWeek(),
+}
 
 export default function reducer(
   state = initialState,
@@ -25,32 +25,32 @@ export default function reducer(
       return {
         ...state,
         loading: true,
-        error: false
-      };
+        error: false,
+      }
     }
     case SCHEDULE_REQUEST_SUCCESS: {
       return {
         ...state,
         loading: false,
         error: false,
-        scheduleData: action.scheduleData
-      };
+        scheduleData: action.scheduleData,
+      }
     }
     case SCHEDULE_REQUEST_FAILURE: {
       return {
         ...state,
         loading: false,
         error: true,
-        message: action.message
-      };
+        message: action.message,
+      }
     }
     case SET_WEEK: {
       return {
         ...state,
-        week: action.week
-      };
+        week: action.week,
+      }
     }
     default:
-      return state;
+      return state
   }
 }

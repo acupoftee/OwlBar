@@ -1,8 +1,8 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import { Flex, Icon } from "antd-mobile";
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { Flex, Icon } from 'antd-mobile'
 
-import { colors } from "../../styles/theme";
+import { colors } from '../../styles/theme'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -12,10 +12,10 @@ const Wrapper = styled.div`
   padding: 4px 7px;
   background-color: ${colors.black};
   color: ${colors.white};
-`;
+`
 
 const Button = styled(Icon)<{
-  disabled?: boolean;
+  disabled?: boolean
 }>`
   cursor: pointer;
   ${props =>
@@ -24,29 +24,29 @@ const Button = styled(Icon)<{
       pointer-events: none;
       color: ${colors.liteGrey};
     `}
-`;
+`
 
 const Item = styled(Flex.Item)`
   margin-left: 0;
   text-align: center;
-`;
+`
 
 const Date = styled.p`
   font-size: 15px;
-`;
+`
 
 const DateSelector = ({
   date,
   addWeek,
   subWeek,
   disableAdd,
-  disableSub
+  disableSub,
 }: {
-  date: number;
-  addWeek: () => void;
-  subWeek: () => void;
-  disableAdd?: boolean;
-  disableSub?: boolean;
+  date: number
+  addWeek: () => void
+  subWeek: () => void
+  disableAdd?: boolean
+  disableSub?: boolean
 }) => (
   <Wrapper>
     <Flex>
@@ -57,6 +57,6 @@ const DateSelector = ({
       <Button type="right" onClick={addWeek} disabled={disableAdd} />
     </Flex>
   </Wrapper>
-);
+)
 
-export default DateSelector;
+export default DateSelector

@@ -1,23 +1,23 @@
-import React, { useLayoutEffect } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { EventCard, DateSelector } from "../../components/Schedule";
-import DataSection from "../../components/shared/DataSection";
-import * as actions from "./actions";
-import { ScheduleAction } from "./actions";
-import { ScheduleState } from "./types";
-import { PageBar } from "../../components/TabBar";
-import { HexLoader } from "../../components/Loaders";
+import React, { useLayoutEffect } from 'react'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { EventCard, DateSelector } from '../../components/Schedule'
+import DataSection from '../../components/shared/DataSection'
+import * as actions from './actions'
+import { ScheduleAction } from './actions'
+import { ScheduleState } from './types'
+import { PageBar } from '../../components/TabBar'
+import { HexLoader } from '../../components/Loaders'
 
 const Divider = styled.hr`
   margin: 0 25px 20px 25px;
-`;
+`
 export interface Props {
-  fetchScheduleData: (week: number) => Promise<ScheduleAction>;
-  loading: boolean;
-  error: boolean;
-  scheduleData: any;
-  week: number;
+  fetchScheduleData: (week: number) => Promise<ScheduleAction>
+  loading: boolean
+  error: boolean
+  scheduleData: any
+  week: number
 }
 
 const Schedule = ({
@@ -25,37 +25,37 @@ const Schedule = ({
   error,
   loading,
   scheduleData,
-  week
+  week,
 }: {
-  fetchScheduleData: (week: number) => Promise<ScheduleAction>;
-  loading: boolean;
-  error: boolean;
-  scheduleData: any;
-  week: number;
+  fetchScheduleData: (week: number) => Promise<ScheduleAction>
+  loading: boolean
+  error: boolean
+  scheduleData: any
+  week: number
 }) => {
   useLayoutEffect(() => {
-    fetchScheduleData(week);
-  }, []);
+    fetchScheduleData(week)
+  }, [])
 
   const addWeek = (week: number) => {
-    let newWeek = week;
+    let newWeek = week
     if (week < 27) {
-      newWeek++;
+      newWeek++
     } else {
-      newWeek = 27;
+      newWeek = 27
     }
-    return newWeek;
-  };
+    return newWeek
+  }
 
   const subWeek = (week: number) => {
-    let newWeek = week;
+    let newWeek = week
     if (week > 1) {
-      newWeek--;
+      newWeek--
     } else {
-      newWeek = 1;
+      newWeek = 1
     }
-    return newWeek;
-  };
+    return newWeek
+  }
 
   return (
     <PageBar currentTab={1}>
@@ -63,26 +63,26 @@ const Schedule = ({
         <DateSelector
           date={week}
           addWeek={() => {
-            const newWeek = addWeek(week);
-            fetchScheduleData(newWeek);
+            const newWeek = addWeek(week)
+            fetchScheduleData(newWeek)
           }}
           subWeek={() => {
-            const newWeek = subWeek(week);
-            fetchScheduleData(newWeek);
+            const newWeek = subWeek(week)
+            fetchScheduleData(newWeek)
           }}
           disableAdd={week === 27}
           disableSub={week === 1}
         />
         <DataSection
           style={{
-            height: "auto",
-            marginTop: "30px"
+            height: 'auto',
+            marginTop: '30px',
           }}
         >
           {loading && <HexLoader />}
-          {error && "error loading schedule"}
+          {error && 'error loading schedule'}
           {!loading && !error && (
-            <div style={{ overflowY: "scroll" }}>
+            <div style={{ overflowY: 'scroll' }}>
               {scheduleData.tableData.events.map((event: any, idx: number) => {
                 return (
                   <>
@@ -93,7 +93,7 @@ const Schedule = ({
                         bannerLogo: event.eventBanner?.featuredImage,
                         host: event.eventBanner?.hostingTeam.shortName,
                         hostId: event.eventBanner?.hostingTeam.teamId,
-                        location: event.eventBanner?.venue.title
+                        location: event.eventBanner?.venue.title,
                       }}
                       matches={event.matches}
                     />
@@ -101,25 +101,25 @@ const Schedule = ({
                       <Divider key={idx + 1} />
                     )}
                   </>
-                );
+                )
               })}
             </div>
           )}
         </DataSection>
       </>
     </PageBar>
-  );
-};
+  )
+}
 
 const mapStateToProps = ({ schedule }: { schedule: ScheduleState }): any => ({
   loading: schedule.loading,
   error: schedule.error,
   scheduleData: schedule.scheduleData,
-  week: schedule.week
-});
+  week: schedule.week,
+})
 
 export default connect<ScheduleState, Props>(
   // @ts-ignore
   mapStateToProps,
   actions
-)(Schedule);
+)(Schedule)

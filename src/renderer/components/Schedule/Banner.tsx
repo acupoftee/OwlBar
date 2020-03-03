@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { Flex } from "antd-mobile";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
+import React from 'react'
+import styled from 'styled-components'
+import { Flex } from 'antd-mobile'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarkerAlt, faTicketAlt } from '@fortawesome/free-solid-svg-icons'
 
-import Colors from "../../../resources/Colors";
+import Colors from '../../../resources/Colors'
 
 const BannerBackground = styled.div<{
-  imageUrl: string;
+  imageUrl: string
 }>`
   background-image: url(${props => props.imageUrl});
   background-size: cover;
@@ -18,10 +18,10 @@ const BannerBackground = styled.div<{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
+`
 
 const BannerLogo = styled.div<{
-  logoUrl: string;
+  logoUrl: string
 }>`
   background-image: url(${props => props.logoUrl});
   background-size: contain;
@@ -30,15 +30,15 @@ const BannerLogo = styled.div<{
   width: 120px;
   height: 120px;
   padding: 10px;
-`;
+`
 
 const EventWrapper = styled(Flex)<{
-  background: string;
+  background: string
 }>`
   justify-content: center;
   flex-wrap: wrap;
   background-color: ${props => props.background};
-`;
+`
 
 const EventInfo = styled(Flex)`
   height: 28px;
@@ -50,26 +50,26 @@ const EventInfo = styled(Flex)`
   text-transform: uppercase;
   flex: 1 1 50%;
   color: rgba(255, 255, 255, 0.9);
-`;
+`
 
 const Content = styled.p`
   height: auto;
   flex: 1 1 0%;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
-`;
+`
 const Banner = ({
   bannerBackground,
   bannerLogo,
   host,
   location,
-  hostId
+  hostId,
 }: {
-  bannerBackground: string;
-  bannerLogo: string;
-  host: string;
-  location: string;
-  hostId: number;
+  bannerBackground: string
+  bannerLogo: string
+  host: string
+  location: string
+  hostId: number
 }) => {
   return (
     <>
@@ -84,9 +84,9 @@ const Banner = ({
           <FontAwesomeIcon
             icon={faTicketAlt}
             style={{
-              marginRight: "10px",
-              transformOrigin: "center",
-              transform: "rotate(-45deg)"
+              marginRight: '10px',
+              transformOrigin: 'center',
+              transform: 'rotate(-45deg)',
             }}
           />
           tickets
@@ -94,13 +94,13 @@ const Banner = ({
         <EventInfo>
           <FontAwesomeIcon
             icon={faMapMarkerAlt}
-            style={{ marginRight: "10px" }}
+            style={{ marginRight: '10px' }}
           />
           {location}
         </EventInfo>
       </EventWrapper>
     </>
-  );
-};
+  )
+}
 
-export default Banner;
+export default Banner

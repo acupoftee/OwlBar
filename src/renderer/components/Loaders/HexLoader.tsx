@@ -1,13 +1,13 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
 
-const timing = "3s";
+const timing = '3s'
 
 const rotateSmall = keyframes`
   100% {
     transform: rotate(1turn);
   }
-`;
+`
 
 const rotateLarge = keyframes`
   0% {
@@ -23,7 +23,7 @@ const rotateLarge = keyframes`
     clip-path: inset(0px 30px 30px 0px);
     -webkit-clip-path: inset(0px 30px 30px 0px);
   }
-`;
+`
 
 const animateHex = keyframes`
   0% {
@@ -38,7 +38,7 @@ const animateHex = keyframes`
     transform: scale(1.02);
     opacity: 1;
   }
-`;
+`
 
 const HexBorder = styled.div`
   position: absolute;
@@ -51,7 +51,7 @@ const HexBorder = styled.div`
   border-radius: 100%;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     width: 174px;
     height: 174px;
@@ -67,7 +67,7 @@ const HexBorder = styled.div`
   }
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     width: 174px;
     height: 174px;
@@ -80,7 +80,7 @@ const HexBorder = styled.div`
     -webkit-clip-path: inset(0px 30px 30px 0px);
     animation: ${rotateLarge} 1s linear infinite;
   }
-`;
+`
 
 const Hexagons = styled.div`
   position: relative;
@@ -88,7 +88,7 @@ const Hexagons = styled.div`
   padding: 5%;
   top: 30px;
   left: 35px;
-`;
+`
 
 const Hexagon = styled.div`
   position: absolute;
@@ -99,7 +99,7 @@ const Hexagon = styled.div`
   transform-origin: center;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: -11.5px;
     left: 0;
@@ -111,7 +111,7 @@ const Hexagon = styled.div`
   }
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 23px;
     left: 0;
@@ -158,7 +158,7 @@ const Hexagon = styled.div`
     top: 84px;
     animation: ${animateHex} ${timing} 0.6s infinite;
   }
-`;
+`
 
 const HexLoader = () => (
   <HexBorder>
@@ -183,6 +183,6 @@ const HexLoader = () => (
   //     <div class="hexagon"></div>
   //   </div>
   // </div>
-);
+)
 
-export default HexLoader;
+export default HexLoader

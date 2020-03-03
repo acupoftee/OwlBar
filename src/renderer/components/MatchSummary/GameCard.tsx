@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { Flex } from "antd-mobile";
-import { getPrimaryColor } from "owl-colors";
-import { colors } from "../../styles/theme";
-import Logos from "../../../resources/Logos";
+import React from 'react'
+import styled from 'styled-components'
+import { Flex } from 'antd-mobile'
+import { getPrimaryColor } from 'owl-colors'
+import { colors } from '../../styles/theme'
+import Logos from '../../../resources/Logos'
 
 const MapCard = styled(Flex)`
   width: 100vw;
@@ -13,10 +13,10 @@ const MapCard = styled(Flex)`
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
   flex-direction: column;
-`;
+`
 
 const MapImageCover = styled.div<{
-  mapImageUrl: string;
+  mapImageUrl: string
 }>`
   height: 85px;
   width: 100%;
@@ -39,10 +39,10 @@ const MapImageCover = styled.div<{
   p {
     margin-top: 10%;
   }
-`;
+`
 
 const Team = styled(Flex)<{
-  background: string;
+  background: string
 }>`
   background-color: ${props => props.background};
   width: 50%;
@@ -52,18 +52,18 @@ const Team = styled(Flex)<{
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-`;
+`
 
 const TeamName = styled.p`
   margin: auto 15px;
-`;
+`
 
 const TeamLogo = styled.img`
   width: 30px;
   height: auto;
   margin: 0 10px;
   user-drag: none;
-`;
+`
 
 const MapBar = styled(Flex)`
   background-color: black;
@@ -75,17 +75,17 @@ const MapBar = styled(Flex)`
   justify-content: center;
   align-items: center;
   font-weight: 700;
-`;
+`
 
 type GameProps = {
-  homeTeam: string;
-  awayTeam: string;
-  scores: number[];
-  mapImage: string;
-  mapName: string;
-  mapNumber: number;
-  mapType: string;
-};
+  homeTeam: string
+  awayTeam: string
+  scores: number[]
+  mapImage: string
+  mapName: string
+  mapNumber: number
+  mapType: string
+}
 
 const GameCard = (props: GameProps) => (
   <MapCard>
@@ -93,7 +93,7 @@ const GameCard = (props: GameProps) => (
     <MapImageCover mapImageUrl={props.mapImage}>
       <p>{props.mapName}</p>
     </MapImageCover>
-    <Flex style={{ width: "100vw" }}>
+    <Flex style={{ width: '100vw' }}>
       <Team background={getPrimaryColor(props.homeTeam).hex}>
         <TeamName>{props.homeTeam}</TeamName>
         <TeamLogo src={Logos[props.homeTeam] as string} />
@@ -106,6 +106,6 @@ const GameCard = (props: GameProps) => (
       </Team>
     </Flex>
   </MapCard>
-);
+)
 
-export default GameCard;
+export default GameCard

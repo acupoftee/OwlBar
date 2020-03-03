@@ -1,3 +1,3 @@
-import MatchSummary from "./MatchSummary";
+import MatchSummary from './MatchSummary'
 
-export default MatchSummary;
+export default MatchSummary

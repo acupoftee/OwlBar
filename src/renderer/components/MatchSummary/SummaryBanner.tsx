@@ -1,28 +1,28 @@
-import React from "react";
-import styled from "styled-components";
-import moment from "moment-timezone";
-import { Flex } from "antd-mobile";
-import { getPrimaryColor } from "owl-colors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCrown } from "@fortawesome/free-solid-svg-icons";
-import Logos from "../../../resources/Logos";
-import { colors } from "../../styles/theme";
+import React from 'react'
+import styled from 'styled-components'
+import moment from 'moment-timezone'
+import { Flex } from 'antd-mobile'
+import { getPrimaryColor } from 'owl-colors'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCrown } from '@fortawesome/free-solid-svg-icons'
+import Logos from '../../../resources/Logos'
+import { colors } from '../../styles/theme'
 
 const SummaryCard = styled(Flex)`
   width: 100vw;
   height: 150px;
   font-weight: 600;
   flex-direction: column;
-`;
+`
 
 const ScoreBanner = styled(Flex)`
   width: 100%;
   height: 120px;
   border-bottom: 5px solid ${colors.black};
-`;
+`
 
 const Team = styled(Flex)<{
-  background: string;
+  background: string
 }>`
   background-color: ${props => props.background};
   width: 100%;
@@ -32,22 +32,22 @@ const Team = styled(Flex)<{
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-`;
+`
 
 const TeamLogo = styled.img`
   width: 50px;
   height: auto;
   margin: auto 10px;
   user-drag: none;
-`;
+`
 
 const IconContainer = styled.div`
   height: 10px;
-`;
+`
 
 const Score = styled.span`
   font-size: 2.4em;
-`;
+`
 
 const DateBar = styled(Flex)`
   background-color: black;
@@ -58,16 +58,16 @@ const DateBar = styled(Flex)`
   font-size: 12px;
   justify-content: center;
   align-items: center;
-`;
+`
 
 type SummaryBannerProps = {
-  homeTeamAbbreviation: string;
-  awayTeamAbbreviation: string;
-  scores: number[];
-  matchDate: number;
-};
+  homeTeamAbbreviation: string
+  awayTeamAbbreviation: string
+  scores: number[]
+  matchDate: number
+}
 
-const getWinner = (scores: number[]) => Math.max(scores[0], scores[1]);
+const getWinner = (scores: number[]) => Math.max(scores[0], scores[1])
 
 const SummaryBanner = (props: SummaryBannerProps) => (
   <SummaryCard>
@@ -81,16 +81,16 @@ const SummaryBanner = (props: SummaryBannerProps) => (
           direction="column"
           align="center"
           justify="center"
-          style={{ height: "100%" }}
+          style={{ height: '100%' }}
         >
           <IconContainer>
             <FontAwesomeIcon
               icon={faCrown}
               style={{
-                fontSize: ".7em",
+                fontSize: '.7em',
                 display: `${
-                  getWinner(props.scores) === props.scores[0] ? "block" : "none"
-                }`
+                  getWinner(props.scores) === props.scores[0] ? 'block' : 'none'
+                }`,
               }}
             />
           </IconContainer>
@@ -102,16 +102,16 @@ const SummaryBanner = (props: SummaryBannerProps) => (
           direction="column"
           align="center"
           justify="center"
-          style={{ height: "100%" }}
+          style={{ height: '100%' }}
         >
           <IconContainer>
             <FontAwesomeIcon
               icon={faCrown}
               style={{
-                fontSize: ".7em",
+                fontSize: '.7em',
                 display: `${
-                  getWinner(props.scores) === props.scores[1] ? "block" : "none"
-                }`
+                  getWinner(props.scores) === props.scores[1] ? 'block' : 'none'
+                }`,
               }}
             />
           </IconContainer>
@@ -123,9 +123,9 @@ const SummaryBanner = (props: SummaryBannerProps) => (
         </Flex>
       </Team>
     </ScoreBanner>
-    <DateBar>{`${moment(props.matchDate).format("dddd, MMM Do")} |
-      ${moment(props.matchDate).format("h:mm a")}`}</DateBar>
+    <DateBar>{`${moment(props.matchDate).format('dddd, MMM Do')} |
+      ${moment(props.matchDate).format('h:mm a')}`}</DateBar>
   </SummaryCard>
-);
+)
 
-export default SummaryBanner;
+export default SummaryBanner

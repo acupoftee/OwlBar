@@ -1,43 +1,43 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { TabBar, Flex } from "antd-mobile";
+import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { TabBar, Flex } from 'antd-mobile'
 
-import Layout from "../shared/Layout";
-import { colors } from "../../styles/theme";
-import calendarWhiteIcon from "../../../resources/calendar_white.svg";
-import calendarGreyIcon from "../../../resources/calendar_grey.svg";
-import trophyWhiteIcon from "../../../resources/trophy_white.svg";
-import trophyBlackIcon from "../../../resources/trophy_grey.svg";
-import settingsWhiteIcon from "../../../resources/settings_white.svg";
-import settingsBlackIcon from "../../../resources/settings_grey.svg";
+import Layout from '../shared/Layout'
+import { colors } from '../../styles/theme'
+import calendarWhiteIcon from '../../../resources/calendar_white.svg'
+import calendarGreyIcon from '../../../resources/calendar_grey.svg'
+import trophyWhiteIcon from '../../../resources/trophy_white.svg'
+import trophyBlackIcon from '../../../resources/trophy_grey.svg'
+import settingsWhiteIcon from '../../../resources/settings_white.svg'
+import settingsBlackIcon from '../../../resources/settings_grey.svg'
 
 const Content = styled(Flex)`
   flex: 1;
   width: 100%;
   height: 100%;
   padding: 0;
-`;
+`
 
 const Title = styled.span`
   cursor: pointer;
-`;
+`
 
 const Icon = styled.div<{
-  url: string;
+  url: string
 }>`
   width: 22px;
   height: 22px;
   background: url(${props => props.url}) center center / 21px 21px no-repeat;
   cursor: pointer;
-`;
+`
 
 const PageBar = ({
   currentTab,
-  children
+  children,
 }: {
-  currentTab: number;
-  children: React.ReactNode;
+  currentTab: number
+  children: React.ReactNode
 }) => (
   <Layout>
     <TabBar
@@ -77,15 +77,15 @@ const PageBar = ({
       </TabBar.Item>
     </TabBar>
   </Layout>
-);
+)
 
 PageBar.propTypes = {
   currentTab: PropTypes.number.isRequired,
-  children: PropTypes.element
-};
+  children: PropTypes.element,
+}
 
 PageBar.defaultProps = {
-  children: <Fragment />
-};
+  children: <Fragment />,
+}
 
-export default PageBar;
+export default PageBar

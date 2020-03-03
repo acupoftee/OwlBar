@@ -1,27 +1,27 @@
-import React from "react";
-import styled from "styled-components";
-import Banner from "./Banner";
-import MatchCard from "./MatchCard";
+import React from 'react'
+import styled from 'styled-components'
+import Banner from './Banner'
+import MatchCard from './MatchCard'
 
 const Wrapper = styled.div`
   width: 100%;
   height: auto;
   padding-bottom: 10px;
-`;
+`
 
 interface BannerProps {
-  bannerBackground: string;
-  bannerLogo: string;
-  host: string;
-  hostId: number;
-  location: string;
+  bannerBackground: string
+  bannerLogo: string
+  host: string
+  hostId: number
+  location: string
 }
 const EventCard = ({
   bannerProps,
-  matches
+  matches,
 }: {
-  bannerProps: BannerProps;
-  matches: [];
+  bannerProps: BannerProps
+  matches: []
 }) => (
   <Wrapper>
     {bannerProps.bannerBackground && (
@@ -33,7 +33,7 @@ const EventCard = ({
         hostId={bannerProps.hostId}
       />
     )}
-    <div style={{ transform: "scale(0.95)", marginTop: "-8px" }}>
+    <div style={{ transform: 'scale(0.95)', marginTop: '-8px' }}>
       {matches.map((match: any) => (
         <MatchCard
           key={match.id}
@@ -47,6 +47,6 @@ const EventCard = ({
       ))}
     </div>
   </Wrapper>
-);
+)
 
-export default EventCard;
+export default EventCard

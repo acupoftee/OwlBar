@@ -1,8 +1,8 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import { Flex, Icon } from "antd-mobile";
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { Flex, Icon } from 'antd-mobile'
 
-import { colors } from "../../styles/theme";
+import { colors } from '../../styles/theme'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -12,10 +12,10 @@ const Wrapper = styled.div`
   padding: 4px 7px;
   background-color: ${colors.black};
   color: ${colors.white};
-`;
+`
 
 const Button = styled(Icon)<{
-  disabled?: boolean;
+  disabled?: boolean
 }>`
   cursor: pointer;
   ${props =>
@@ -24,16 +24,16 @@ const Button = styled(Icon)<{
       pointer-events: none;
       color: ${colors.liteGrey};
     `}
-`;
+`
 
 const Item = styled(Flex.Item)`
   margin-left: 0;
   text-align: center;
-`;
+`
 
 const Text = styled.p`
   font-size: 15px;
-`;
+`
 
 const BackToSchdule = ({ back }: { back: () => void }) => (
   <Wrapper>
@@ -44,6 +44,6 @@ const BackToSchdule = ({ back }: { back: () => void }) => (
       </Item>
     </Flex>
   </Wrapper>
-);
+)
 
-export default BackToSchdule;
+export default BackToSchdule
