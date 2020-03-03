@@ -12,7 +12,7 @@ const Card = styled(Flex)`
   width: 100vw;
   height: 70px;
   overflow: hidden;
-  margin-top: 4%;
+  margin-top: 6px;
   font-weight: 600;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
@@ -112,7 +112,7 @@ const MatchCard = ({
   start: number
 }) => {
   return (
-    <>
+    <div style={{ transform: 'scale(0.95)' }}>
       <Card>
         <DateStrip startDate={start} status={status} live={live} />
         <Flex style={{ width: '100vw' }}>
@@ -129,7 +129,7 @@ const MatchCard = ({
         </Flex>
         {live && <LiveLoader />}
       </Card>
-    </>
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ import MatchCard from './MatchCard'
 const Wrapper = styled.div`
   width: 100%;
   height: auto;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 `
 
 interface BannerProps {
@@ -34,7 +34,7 @@ const EventCard = ({
         hostId={bannerProps.hostId}
       />
     )}
-    <div style={{ transform: 'scale(0.95)', marginTop: '-8px' }}>
+    <>
       {matches.map((match: any) => {
         const content = (
           <MatchCard
@@ -53,7 +53,7 @@ const EventCard = ({
           <Link to={`/match/${match.id}`}>{content}</Link>
         )
       })}
-    </div>
+    </>
   </Wrapper>
 )
 

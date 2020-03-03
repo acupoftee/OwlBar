@@ -10,7 +10,7 @@ import { PageBar } from '../../components/TabBar'
 import { HexLoader } from '../../components/Loaders'
 
 const Divider = styled.hr`
-  margin: 0 25px 20px 25px;
+  margin: 20px 25px 20px 25px;
 `
 export interface Props {
   fetchScheduleData: (week: number) => Promise<ScheduleAction>
