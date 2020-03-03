@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
   GameCard,
@@ -33,14 +33,16 @@ const Match = ({
   matchData: any
 }) => {
   const { id } = useParams()
+  const history = useHistory()
+
   useLayoutEffect(() => {
-    fetchMatchData(id)
+    fetchMatchData(+id!)
   }, [])
 
   return (
     <PageBar currentTab={1}>
       <>
-        <BackToSchedule back={() => {}} />
+        <BackToSchedule back={() => history.push('/')} />
         <DataSection
           style={{
             height: 'auto',
