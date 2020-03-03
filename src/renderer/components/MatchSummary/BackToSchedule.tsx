@@ -40,7 +40,7 @@ const BackToSchdule = ({ back }: { back: () => void }) => (
     <Flex>
       <Button type="left" onClick={back} />
       <Item>
-        <Text>Back To Schedule</Text>
+        <Text>Match Details</Text>
       </Item>
     </Flex>
   </Wrapper>
