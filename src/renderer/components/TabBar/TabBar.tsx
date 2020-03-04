@@ -75,7 +75,7 @@ const PageBar = ({
           selected={currentTab === 3}
           icon={<Icon url={settingsBlackIcon} />}
           selectedIcon={<Icon url={settingsWhiteIcon} />}
-          onPress={() => {}}
+          onPress={() => history.push('/settings')}
         >
           <Content direction="column">{currentTab === 3 && children}</Content>
         </TabBar.Item>

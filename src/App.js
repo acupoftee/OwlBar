@@ -6,6 +6,7 @@ import Standings from './renderer/containers/Standings'
 import GlobalStyle from './renderer/styles/global'
 import Schedule from './renderer/containers/Schedule'
 import MatchSummary from './renderer/containers/MatchSummary'
+import SettingsPage from './renderer/containers/Settings'
 
 const store = configureStore()
 function App() {
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/match/:id">
             <MatchSummary />
+          </Route>
+          <Route path="/settings">
+            <SettingsPage />
           </Route>
         </Switch>
       </Router>
