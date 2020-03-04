@@ -1,6 +1,5 @@
 import React from 'react'
 import { Settings } from '../../components/Settings'
-import DataSection from '../../components/shared/DataSection'
 import { PageBar } from '../../components/TabBar'
 
 const electron = window.require('electron')
