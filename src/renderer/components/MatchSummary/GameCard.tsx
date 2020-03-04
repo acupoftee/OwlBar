@@ -8,7 +8,7 @@ import Logos from '../../../resources/Logos'
 const MapCard = styled(Flex)`
   width: 100vw;
   height: auto;
-  margin-bottom: 4%;
+  margin-bottom: 4px;
   font-weight: 600;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
@@ -93,24 +93,26 @@ type GameProps = {
 }
 
 const GameCard = (props: GameProps) => (
-  <MapCard>
-    <MapBar>{`Map ${props.mapNumber} - ${props.mapType}`}</MapBar>
-    <MapImageCover mapImageUrl={props.mapImage}>
-      <p>{props.mapName}</p>
-    </MapImageCover>
-    <Flex style={{ width: '100vw' }}>
-      <Team background={getPrimaryColor(props.homeTeam).hex}>
-        <TeamName>{props.homeTeam}</TeamName>
-        <TeamLogo src={Logos[props.homeTeam] as string} />
-        {props.scores && <span>{props.scores[0]}</span>}
-      </Team>
-      <Team background={getPrimaryColor(props.awayTeam).hex}>
-        {props.scores && <span>{props.scores[1]}</span>}
-        <TeamLogo src={Logos[props.awayTeam] as string} />
-        <TeamName>{props.awayTeam}</TeamName>
-      </Team>
-    </Flex>
-  </MapCard>
+  <div style={{ transform: 'scale(0.95)' }}>
+    <MapCard>
+      <MapBar>{`Map ${props.mapNumber} - ${props.mapType}`}</MapBar>
+      <MapImageCover mapImageUrl={props.mapImage}>
+        <p>{props.mapName}</p>
+      </MapImageCover>
+      <Flex style={{ width: '100vw' }}>
+        <Team background={getPrimaryColor(props.homeTeam).hex}>
+          <TeamName>{props.homeTeam}</TeamName>
+          <TeamLogo src={Logos[props.homeTeam] as string} />
+          {props.scores && <span>{props.scores[0]}</span>}
+        </Team>
+        <Team background={getPrimaryColor(props.awayTeam).hex}>
+          {props.scores && <span>{props.scores[1]}</span>}
+          <TeamLogo src={Logos[props.awayTeam] as string} />
+          <TeamName>{props.awayTeam}</TeamName>
+        </Team>
+      </Flex>
+    </MapCard>
+  </div>
 )
 
 export default GameCard

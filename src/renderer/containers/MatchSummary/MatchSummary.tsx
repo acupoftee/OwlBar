@@ -58,8 +58,9 @@ const Match = ({
                 awayTeamAbbreviation={matchData.competitors[1].abbreviatedName}
                 scores={matchData.scores.map((score: any) => score.value)}
                 matchDate={matchData.startDate}
+                gameLength={matchData.games.length}
               />
-              <div style={{ transform: 'scale(0.95)' }}>
+              <div>
                 {matchData.games.map((game: any) => {
                   const map = getMapById(game.attributes.mapGuid)
                   return (

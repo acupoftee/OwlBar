@@ -10,14 +10,15 @@ import { colors } from '../../styles/theme'
 
 const SummaryCard = styled(Flex)`
   width: 100vw;
-  height: 150px;
+  height: 180px;
+  margin-bottom: 4px;
   font-weight: 600;
   flex-direction: column;
 `
 
 const ScoreBanner = styled(Flex)`
   width: 100%;
-  height: 120px;
+  height: 140px;
   border-bottom: 5px solid ${colors.black};
 `
 
@@ -53,7 +54,7 @@ const DateBar = styled(Flex)`
   background-color: black;
   color: ${colors.white};
   width: 100%;
-  height: 40px;
+  height: 30px;
   text-transform: uppercase;
   font-size: 12px;
   justify-content: center;
@@ -65,6 +66,7 @@ type SummaryBannerProps = {
   awayTeamAbbreviation: string
   scores: number[]
   matchDate: number
+  gameLength: number
 }
 
 const getWinner = (scores: number[]) => Math.max(scores[0], scores[1])
@@ -123,8 +125,9 @@ const SummaryBanner = (props: SummaryBannerProps) => (
         </Flex>
       </Team>
     </ScoreBanner>
-    <DateBar>{`${moment(props.matchDate).format('dddd, MMM Do')} |
+    <DateBar>{`${moment(props.matchDate).format('dddd, MMMM Do')} |
       ${moment(props.matchDate).format('h:mm a')}`}</DateBar>
+    <DateBar>{`${props.gameLength} map set`}</DateBar>
   </SummaryCard>
 )
 
