@@ -17,6 +17,22 @@ const MapCard = styled(Flex)`
   &:hover {
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
     transform: translate3d(0, -3px, 3px);
+
+    span {
+      transform: scale(1.3);
+    }
+
+    & > div {
+      box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.1);
+
+      .mapName {
+        transform: translateX(-100%);
+      }
+
+      .mapCaption {
+        transform: translateX(0) translateY(-16px);
+      }
+    }
   }
 `
 
@@ -25,12 +41,8 @@ const MapImageCover = styled.div<{
 }>`
   height: 85px;
   width: 100%;
-  background-image: linear-gradient(
-      to top,
-      rgb(0, 8, 12, 0.6) 100%,
-      transparent 0%
-    ),
-    url(${props => props.mapImageUrl});
+  background-image: url(${props => props.mapImageUrl});
+  box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.5);
   background-size: cover;
   background-repeat: no repeat;
   background-position: 0 50%;
@@ -41,9 +53,20 @@ const MapImageCover = styled.div<{
   font-weight: 800;
   text-shadow: 0 1px black;
   border-bottom: 3px solid ${colors.orange};
+  transition: box-shadow 0.5s ease;
+
   p {
     margin-top: 10%;
   }
+`
+
+const MapLowerThird = styled.p`
+  transition: transform 0.5s ease, background-color 0.7s ease,
+    font-size 0.5s ease;
+  transform: translateX(-100%) translateY(-16px);
+  font-size: 12px;
+  padding: 2px auto;
+  background-color: black;
 `
 
 const Team = styled(Flex)<{
@@ -59,7 +82,8 @@ const Team = styled(Flex)<{
   padding: 10px;
 `
 
-const TeamName = styled.p`
+const TeamName = styled.span`
+  transition: transform 0.2s ease;
   margin: auto 15px;
 `
 
@@ -97,16 +121,25 @@ const GameCard = (props: GameProps) => (
     <MapCard>
       <MapBar>{`Map ${props.mapNumber} - ${props.mapType}`}</MapBar>
       <MapImageCover mapImageUrl={props.mapImage}>
-        <p>{props.mapName}</p>
+        <p className="mapName">{props.mapName}</p>
+        <MapLowerThird className="mapCaption">{props.mapName}</MapLowerThird>
       </MapImageCover>
       <Flex style={{ width: '100vw' }}>
         <Team background={getPrimaryColor(props.homeTeam).hex}>
           <TeamName>{props.homeTeam}</TeamName>
           <TeamLogo src={Logos[props.homeTeam] as string} />
-          {props.scores && <span>{props.scores[0]}</span>}
+          {props.scores && (
+            <span style={{ transition: 'transform 0.2s ease' }}>
+              {props.scores[0]}
+            </span>
+          )}
         </Team>
         <Team background={getPrimaryColor(props.awayTeam).hex}>
-          {props.scores && <span>{props.scores[1]}</span>}
+          {props.scores && (
+            <span style={{ transition: 'transform 0.2s ease' }}>
+              {props.scores[1]}
+            </span>
+          )}
           <TeamLogo src={Logos[props.awayTeam] as string} />
           <TeamName>{props.awayTeam}</TeamName>
         </Team>
