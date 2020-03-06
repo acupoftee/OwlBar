@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import moment from 'moment-timezone'
 import { Flex } from 'antd-mobile'
 import { getPrimaryColor } from 'owl-colors'
@@ -20,7 +20,12 @@ const Card = styled(Flex)`
 
   &:hover {
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
     transform: translate3d(0, -3px, 3px);
+
+    span {
+      transform: scale(1.3);
+    }
   }
 `
 
@@ -64,8 +69,9 @@ const DateBar = styled(Flex)<{
   }
 `
 
-const TeamName = styled.p`
+const TeamName = styled.span`
   margin: auto 15px;
+  transition: all 0.2s ease;
 `
 
 export type MatchStatus = 'PENDING' | 'ONGOING' | 'CONCLUDED'
@@ -119,10 +125,18 @@ const MatchCard = ({
           <Team background={getPrimaryColor(homeTeamAbb).hex}>
             <TeamName>{homeTeamAbb}</TeamName>
             <TeamLogo src={Logos[homeTeamAbb] as string} />
-            {status !== 'PENDING' && <span>{scores[0] || 0}</span>}
+            {status !== 'PENDING' && (
+              <span style={{ transition: 'transform 0.2s ease' }}>
+                {scores[0] || 0}
+              </span>
+            )}
           </Team>
           <Team background={getPrimaryColor(awayTeamAbb).hex}>
-            {status !== 'PENDING' && <span>{scores[1] || 0}</span>}
+            {status !== 'PENDING' && (
+              <span style={{ transition: 'transform 0.2s ease' }}>
+                {scores[1] || 0}
+              </span>
+            )}
             <TeamLogo src={Logos[awayTeamAbb] as string} />
             <TeamName>{awayTeamAbb}</TeamName>
           </Team>
