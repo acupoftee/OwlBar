@@ -56,13 +56,13 @@ const MapImageCover = styled.div<{
   transition: box-shadow 0.5s ease;
 
   p {
+    transition: transform 0.3s ease;
     margin-top: 10%;
   }
 `
 
 const MapLowerThird = styled.p`
-  transition: transform 0.5s ease, background-color 0.7s ease,
-    font-size 0.5s ease;
+  transition: transform 0.3s ease, background-color 0.7s ease;
   transform: translateX(-100%) translateY(-16px);
   font-size: 12px;
   padding: 2px auto;
