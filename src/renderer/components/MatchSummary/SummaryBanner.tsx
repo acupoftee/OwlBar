@@ -99,6 +99,24 @@ const SummaryBanner = (props: SummaryBannerProps) => (
           <Score>{props.scores[0]}</Score>
         </Flex>
       </Team>
+      <div
+        style={{
+          height: '100%',
+          backgroundImage: `linear-gradient(to right, ${
+            getPrimaryColor(props.homeTeamAbbreviation).hex
+          } 49%, ${getPrimaryColor(props.awayTeamAbbreviation).hex} 50%`,
+          color: 'white',
+          textTransform: 'uppercase',
+          display: 'flex',
+          alignItems: 'center',
+          paddingTop: '5%',
+          fontSize: '12px',
+        }}
+      >
+        <span style={{ backgroundColor: '#2c2c2c', padding: '3px' }}>
+          Final
+        </span>
+      </div>
       <Team background={getPrimaryColor(props.awayTeamAbbreviation).hex}>
         <Flex
           direction="column"
