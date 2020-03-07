@@ -1,11 +1,11 @@
 const { app, BrowserWindow } = require('electron')
-// const { menubar } = require('menubar')
+const { menubar } = require('menubar')
 const path = require('path')
 const isDev = require('electron-is-dev')
 
 let win
 
-function createWindow () {
+function createWindow() {
   win = new BrowserWindow({
     width: 300,
     height: 465,

@@ -46,7 +46,7 @@
     "electron-devtools-installer": "^2.2.4",
     "electron-is-dev": "^1.1.0",
     "electron-updater": "^4.2.2",
-    "menubar": "^7.1.0",
+    "menubar": "^8.0.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
     "owl-colors": "0.0.11",
