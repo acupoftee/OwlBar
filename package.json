@@ -88,7 +88,6 @@
     "redux-thunk": "^2.3.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
-    "storybook": "^5.3.13",
     "styled-components": "^4.4.1"
   },
   "scripts": {
@@ -101,9 +100,7 @@
     "postinstall": "electron-builder install-app-deps",
     "preelectron-pack": "yarn build",
     "electron-pack": "electron-builder -mwl",
-    "electron-pack-2": "electron-builder --win --macos -c.extraMetadata.main=build/electron.js",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "electron-pack-2": "electron-builder --win --macos -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": "react-app"
