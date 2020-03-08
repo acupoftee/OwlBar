@@ -61,6 +61,7 @@ menubarApp.on('ready', async () => {
     protocol: 'file:',
     slashes: true,
   });
+  console.log('production-path', prodPath)
   menubarApp.window.loadURL(isDev ? 'http://localhost:3000' : prodPath)
   console.log('app is ready')
 })

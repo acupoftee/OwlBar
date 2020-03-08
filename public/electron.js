@@ -57,10 +57,12 @@ const menubarApp = menubar({
 
 menubarApp.on('ready', async () => {
   const prodPath = format({
-    pathname: resolve('build/index.html'),
+    pathname: resolve('../build/index.html'),
     protocol: 'file:',
     slashes: true,
   });
+  console.log('production-path', prodPath)
+  console.log('dirname', __dirname)
   menubarApp.window.loadURL(isDev ? 'http://localhost:3000' : prodPath)
   console.log('app is ready')
 })

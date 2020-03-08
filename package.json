@@ -1,5 +1,5 @@
 {
-  "name": "owl_bar",
+  "name": "owlbar",
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
@@ -36,12 +36,12 @@
     },
     "publish": {
       "provider": "github",
-      "repo": "owl-bar",
+      "repo": "OwlBar",
       "owner": "acupoftee"
     },
     "mac": {
       "category": "public.app-category.sports",
-      "icon": "src/resources/icono.png",
+      "icon": "src/resources/icon.png",
       "artifactName": "owl-bar-${version}-mac.${ext}"
     },
     "win": {
