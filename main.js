@@ -57,7 +57,7 @@ const menubarApp = menubar({
 
 menubarApp.on('ready', async () => {
   const prodPath = format({
-    pathname: resolve('build/index.html'),
+    pathname: path.join(__dirname, 'build/index.html'),
     protocol: 'file:',
     slashes: true,
   });

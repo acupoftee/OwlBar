@@ -156,7 +156,7 @@ const standingsTable = (teams: any) => (
   <div style={{ width: '100%' }}>
     <VirtualizedTable
       width={300}
-      height={360}
+      height={383}
       headerHeight={30}
       rowHeight={30}
       rowCount={teams.length}
