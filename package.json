@@ -14,11 +14,12 @@
     "productName": "OWL Bar",
     "copyright": "Copyright © 2019 Bethy Diakabana",
     "files": [
-      "build/",
-      "public/electron.js"
+      "build/**/*",
+      "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "build"
+      "buildResources": "src/resources",
+      "output": "dist"
     },
     "dmg": {
       "contents": [
@@ -99,8 +100,7 @@
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
     "preelectron-pack": "yarn build",
-    "electron-pack": "electron-builder -mwl",
-    "electron-pack-2": "electron-builder --win --macos -c.extraMetadata.main=build/electron.js"
+    "electron-pack": "electron-builder -mwl -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": "react-app"
