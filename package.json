@@ -18,7 +18,7 @@
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "src/resources",
+      "buildResources": "src/resources/**/*",
       "output": "dist"
     },
     "dmg": {

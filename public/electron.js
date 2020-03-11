@@ -6,8 +6,8 @@ const isDev = require('electron-is-dev')
 const { resolve } = require('app-root-path')
 
 const menubarApp = menubar({
-  index: 'file://' + path.join(__dirname, 'index.html'),
-  icon: path.join(app.getAppPath(), 'src/resources/logo.png'),
+  index: isDev ? 'http://localhost:3000' : 'file://' + path.join(__dirname, 'index.html'),
+  icon: path.join(__dirname, 'tracer.png'),
   browserWindow: {
     width: 300,
     height: 465,
