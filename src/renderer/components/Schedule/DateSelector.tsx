@@ -52,7 +52,7 @@ const DateSelector = ({
     <Flex>
       <Button type="left" onClick={subWeek} disabled={disableSub} />
       <Item>
-        <Date>{`Week ${date}`}</Date>
+        <Date>{`Week ${date} Schedule`}</Date>
       </Item>
       <Button type="right" onClick={addWeek} disabled={disableAdd} />
     </Flex>
