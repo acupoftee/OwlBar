@@ -3,7 +3,6 @@ import { Flex } from 'antd-mobile'
 import { Table as VirtualizedTable } from 'react-virtualized'
 import { getPrimaryColor } from 'owl-colors'
 import styled from 'styled-components'
-import { colors } from '../../styles/theme'
 
 import Logos from '../../../resources/Logos'
 
