@@ -40,12 +40,12 @@ const MenuItem = styled.div`
   }
 `
 
-function selected(e: React.MouseEvent) {
-  console.log(e.target)
-  e.preventDefault()
-  e.target.style.borderBottom = '2px solid orange'
-  // Here write a For Loop to put "border-style: none" to everyone else
-}
+// function selected(e: React.MouseEvent) {
+//   console.log(e.target)
+//   e.preventDefault()
+//   e.target.style.borderBottom = '2px solid orange'
+//   // Here write a For Loop to put "border-style: none" to everyone else
+// }
 
 const WeekSelector = ({
   date,
@@ -60,15 +60,15 @@ const WeekSelector = ({
   disableAdd?: boolean
   disableSub?: boolean
 }) => {
-  const weeks = []
-  for (let i = 0; i <= 27; i++) {
-    weeks.push(<MenuItem onClick={selected}>{i}</MenuItem>)
-  }
-  return (
-    <Wrapper>
-      <div>{weeks}</div>
-    </Wrapper>
-  )
+  // const weeks = []
+  // for (let i = 0; i <= 27; i++) {
+  //   weeks.push(<MenuItem onClick={selected}>{i}</MenuItem>)
+  // }
+  // return (
+  //   <Wrapper>
+  //     <div>{weeks}</div>
+  //   </Wrapper>
+  // )
 }
 
 export default WeekSelector

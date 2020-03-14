@@ -9,7 +9,7 @@ import { PreviewState } from './types'
 const initialState: PreviewState = {
   loading: true,
   error: false,
-  comparisonData: { home: null, away: null },
+  comparisonData: { home: null, away: null, startDate: 0 },
   message: '',
 }
 

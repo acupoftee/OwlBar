@@ -5,7 +5,6 @@ export interface PreviewState {
     home: object | null
     away: object | null
     startDate: number
-    matchLocation: string
   }
   message: string
 }
