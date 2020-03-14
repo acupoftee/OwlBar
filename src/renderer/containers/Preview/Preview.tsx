@@ -38,7 +38,7 @@ const Preview = ({
   return (
     <PageBar currentTab={1}>
       <>
-        <BackToSchedule text="Match Up" back={() => history.goBack()} />
+        <BackToSchedule text="Match Up" back={() => history.push('/')} />
         <DataSection
           style={{
             height: 'auto',
