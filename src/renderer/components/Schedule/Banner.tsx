@@ -6,6 +6,8 @@ import { faMapMarkerAlt, faTicketAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Colors from '../../../resources/Colors'
 
+const electron = window.require('electron')
+
 const BannerBackground = styled.div<{
   imageUrl: string
 }>`
@@ -58,18 +60,29 @@ const Content = styled.p`
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
 `
+
+const TicketLink = styled.span`
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+  }
+`
+
 const Banner = ({
   bannerBackground,
   bannerLogo,
   host,
   location,
   hostId,
+  ticketLink,
 }: {
   bannerBackground: string
   bannerLogo: string
   host: string
   location: string
   hostId: number
+  ticketLink: string
 }) => {
   return (
     <>
@@ -89,7 +102,14 @@ const Banner = ({
               transform: 'rotate(-45deg)',
             }}
           />
-          tickets
+          <TicketLink
+            onClick={() => {
+              electron.remote.app.hide()
+              electron.shell.openExternal(ticketLink)
+            }}
+          >
+            tickets
+          </TicketLink>
         </EventInfo>
         <EventInfo>
           <FontAwesomeIcon

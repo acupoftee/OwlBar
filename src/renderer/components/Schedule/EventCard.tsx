@@ -15,6 +15,7 @@ interface BannerProps {
   host: string
   hostId: number
   location: string
+  ticketLink: string
 }
 const EventCard = ({
   bannerProps,
@@ -31,13 +32,14 @@ const EventCard = ({
         host={bannerProps.host}
         location={bannerProps.location}
         hostId={bannerProps.hostId}
+        ticketLink={bannerProps.ticketLink}
       />
     )}
     <>
-      {matches.map((match: any) => {
+      {matches.map((match: any, idx: number) => {
         const content = (
           <MatchCard
-            key={match.id}
+            key={idx}
             homeTeamAbb={match.competitors[0].abbreviatedName}
             awayTeamAbb={match.competitors[1].abbreviatedName}
             status={match.status}
@@ -48,6 +50,7 @@ const EventCard = ({
         )
         return match.status === 'PENDING' ? (
           <Link
+            key={idx}
             to={{
               pathname: `/preview/${match.id}`,
               state: {
@@ -58,7 +61,9 @@ const EventCard = ({
             {content}
           </Link>
         ) : (
-          <Link to={`/match/${match.id}`}>{content}</Link>
+          <Link key={idx} to={`/match/${match.id}`}>
+            {content}
+          </Link>
         )
       })}
     </>

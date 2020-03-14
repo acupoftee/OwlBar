@@ -50,7 +50,7 @@ const TeamLogo = styled.img`
 `
 
 const DateBar = styled(Flex)<{
-  live: boolean
+  live?: boolean
 }>`
   background-color: ${props => (props.live ? 'red' : 'gray')};
   color: ${colors.white};
@@ -96,7 +96,7 @@ const DateStrip = ({
     statusText = 'Final'
   }
   return (
-    <DateBar live={live}>
+    <DateBar live={live ? live : undefined}>
       <p style={{ fontSize: '12px' }}>{`${date} | ${statusText}`}</p>
     </DateBar>
   )

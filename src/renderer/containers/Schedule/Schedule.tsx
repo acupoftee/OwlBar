@@ -96,7 +96,7 @@ const Schedule = ({
             >
               {scheduleData.tableData.events.map((event: any, idx: number) => {
                 return (
-                  <>
+                  <div key={idx}>
                     <EventCard
                       key={idx}
                       bannerProps={{
@@ -105,13 +105,14 @@ const Schedule = ({
                         host: event.eventBanner?.hostingTeam.shortName,
                         hostId: event.eventBanner?.hostingTeam.teamId,
                         location: event.eventBanner?.venue.title,
+                        ticketLink: event.eventBanner?.ticket.link.href,
                       }}
                       matches={event.matches}
                     />
                     {idx !== scheduleData.tableData.events.length - 1 && (
                       <Divider key={idx + 1} />
                     )}
-                  </>
+                  </div>
                 )
               })}
             </div>
