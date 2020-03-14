@@ -82,6 +82,14 @@ const Schedule = ({
               There are no matches this week.
             </Flex>
           )}
+          {!loading &&
+            !error &&
+            week === 13 &&
+            scheduleData.tableData.events[0].matches.length === 0 && (
+              <Flex align="center" justify="center" style={{ height: '100vh' }}>
+                All Star Week. Stay tuned for updates!
+              </Flex>
+            )}
           {!loading && !error && (
             <div
               style={{ overflowY: 'scroll', height: 'auto', marginTop: '30px' }}

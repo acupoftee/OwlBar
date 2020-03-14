@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   height: auto;
   padding-bottom: 5px;
 `
-
 interface BannerProps {
   bannerBackground: string
   bannerLogo: string
