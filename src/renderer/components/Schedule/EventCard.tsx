@@ -48,7 +48,16 @@ const EventCard = ({
           />
         )
         return match.status === 'PENDING' ? (
-          <div>{content}</div>
+          <Link
+            to={{
+              pathname: `/preview/${match.id}`,
+              state: {
+                matchLocation: `${bannerProps.location}`,
+              },
+            }}
+          >
+            {content}
+          </Link>
         ) : (
           <Link to={`/match/${match.id}`}>{content}</Link>
         )

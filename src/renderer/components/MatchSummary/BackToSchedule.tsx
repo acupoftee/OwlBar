@@ -16,8 +16,11 @@ const Wrapper = styled.div`
 
 const Button = styled(Icon)<{
   disabled?: boolean
+  color?: string
 }>`
   cursor: pointer;
+  ${props => props.color && `color: ${props.color}`}
+
   ${props =>
     props.disabled &&
     css`
@@ -35,13 +38,14 @@ const Text = styled.p`
   font-size: 15px;
 `
 
-const BackToSchdule = ({ back }: { back: () => void }) => (
+const BackToSchdule = ({ text, back }: { text: string; back: () => void }) => (
   <Wrapper>
     <Flex>
       <Button type="left" onClick={back} />
       <Item>
-        <Text>Match Details</Text>
+        <Text>{text}</Text>
       </Item>
+      <Button type="right" color={colors.black} onClick={() => {}} />
     </Flex>
   </Wrapper>
 )

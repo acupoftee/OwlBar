@@ -42,7 +42,7 @@ const Match = ({
   return (
     <PageBar currentTab={1}>
       <>
-        <BackToSchedule back={() => history.push('/')} />
+        <BackToSchedule text="Match Summary" back={() => history.goBack()} />
         <DataSection
           style={{
             height: 'auto',

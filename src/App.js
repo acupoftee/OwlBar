@@ -6,7 +6,9 @@ import Standings from './renderer/containers/Standings'
 import GlobalStyle from './renderer/styles/global'
 import Schedule from './renderer/containers/Schedule'
 import MatchSummary from './renderer/containers/MatchSummary'
+import Preview from './renderer/containers/Preview'
 import SettingsPage from './renderer/containers/Settings'
+import { TeamsBanner, Table } from './renderer/components/Preview'
 
 const store = configureStore()
 function App() {
@@ -23,6 +25,9 @@ function App() {
           </Route>
           <Route path="/match/:id">
             <MatchSummary />
+          </Route>
+          <Route path="/preview/:id">
+            <Preview />
           </Route>
           <Route path="/settings">
             <SettingsPage />

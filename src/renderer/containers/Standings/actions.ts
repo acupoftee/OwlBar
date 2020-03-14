@@ -3,10 +3,6 @@ import rp from 'request-promise'
 import { Dispatch } from 'redux'
 import { REQUEST_START, REQUEST_SUCCESS, REQUEST_FAILURE } from './constants'
 import { StandingsState } from './types'
-// import getStandings from "../../../api/StandingsAPI";
-
-// import fetch from "cross-fetch";
-// import { request } from "http";
 
 export interface RequestStart {
   type: typeof REQUEST_START

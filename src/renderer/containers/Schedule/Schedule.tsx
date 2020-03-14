@@ -1,6 +1,7 @@
 import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { Flex } from 'antd-mobile'
 import { EventCard, DateSelector } from '../../components/Schedule'
 import DataSection from '../../components/shared/DataSection'
 import * as actions from './actions'
@@ -76,6 +77,11 @@ const Schedule = ({
         <DataSection>
           {loading && <HexLoader />}
           {error && 'error loading schedule'}
+          {!loading && !error && scheduleData.tableData.events.length === 0 && (
+            <Flex align="center" justify="center" style={{ height: '100vh' }}>
+              There are no matches this week.
+            </Flex>
+          )}
           {!loading && !error && (
             <div
               style={{ overflowY: 'scroll', height: 'auto', marginTop: '30px' }}

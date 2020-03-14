@@ -56,7 +56,7 @@ type TeamsBannerProps = {
   homeTeamAbbreviation: string
   awayTeamAbbreviation: string
   matchDate: number
-  matchAddress: string
+  matchAddress?: string
 }
 
 const TeamsBanner = (props: TeamsBannerProps) => (
@@ -96,7 +96,7 @@ const TeamsBanner = (props: TeamsBannerProps) => (
     <DateBar>{`${moment(props.matchDate).format('dddd, MMMM Do')} | ${moment(
       props.matchDate
     ).format('h:mm a')}`}</DateBar>
-    <DateBar style={{ fontSize: '10px' }}>{props.matchAddress}</DateBar>
+    {/* <DateBar style={{ fontSize: '10px' }}>{props.matchAddress}</DateBar> */}
   </Wrapper>
 )
 
