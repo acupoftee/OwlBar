@@ -6,6 +6,7 @@ import {
   getTertiaryColor,
 } from 'owl-colors'
 import useWindowSize from 'react-use/lib/useWindowSize'
+import LightenDarkenColor from '../../../utils/color'
 
 interface WindowDimensions {
   width: number
@@ -18,7 +19,7 @@ const Confetti = ({ winner }: { winner: string }) => {
     getPrimaryColor(winner).hex,
     getSecondaryColor(winner).hex,
     getTertiaryColor(winner).hex,
-  ]
+  ].map(color => LightenDarkenColor(color, 70))
 
   return (
     <ReactConfetti

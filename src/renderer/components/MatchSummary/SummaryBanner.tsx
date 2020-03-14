@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import moment from 'moment-timezone'
 import { Flex } from 'antd-mobile'
 import { getPrimaryColor } from 'owl-colors'
@@ -41,9 +41,19 @@ const TeamLogo = styled.img`
   margin: auto 10px;
   user-drag: none;
 `
+const crowning = keyframes`
+  from {
+    transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+`
 
 const IconContainer = styled.div`
   height: 10px;
+  transform: translateY(-40px);
+  animation: ${crowning} 1s ease forwards;
 `
 
 const Score = styled.span`
