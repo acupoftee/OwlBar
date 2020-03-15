@@ -5,7 +5,7 @@ import { PageBar } from '../../components/TabBar'
 const electron = window.require('electron')
 
 const SettingsPage = () => (
-  <PageBar currentTab={3}>
+  <PageBar currentTab={4}>
     <Settings
       quit={() => electron.remote.app.quit()}
       openExternal={(url: string) => () => {

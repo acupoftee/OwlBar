@@ -7,6 +7,8 @@ import Layout from '../shared/Layout'
 import { colors } from '../../styles/theme'
 import calendarWhiteIcon from '../../../resources/calendar_white.svg'
 import calendarGreyIcon from '../../../resources/calendar_grey.svg'
+import newsWhiteIcon from '../../../resources/news_white.svg'
+import newsGreyIcon from '../../../resources/news_grey.svg'
 import trophyWhiteIcon from '../../../resources/trophy_white.svg'
 import trophyBlackIcon from '../../../resources/trophy_grey.svg'
 import settingsWhiteIcon from '../../../resources/settings_white.svg'
@@ -54,7 +56,6 @@ const PageBar = ({
           icon={<Icon url={calendarGreyIcon} />}
           selectedIcon={<Icon url={calendarWhiteIcon} />}
           onPress={() => history.push('/')}
-          // onPress={() => {}}
         >
           <Content direction="column">{currentTab === 1 && children}</Content>
         </TabBar.Item>
@@ -65,19 +66,28 @@ const PageBar = ({
           icon={<Icon url={trophyBlackIcon} />}
           selectedIcon={<Icon url={trophyWhiteIcon} />}
           onPress={() => history.push('/standings')}
-          // onPress={() => {}}
         >
           <Content direction="column">{currentTab === 2 && children}</Content>
         </TabBar.Item>
         <TabBar.Item
+          key="News"
+          title={((<Title>News</Title>) as any) as string}
+          selected={currentTab === 3}
+          icon={<Icon url={newsGreyIcon} />}
+          selectedIcon={<Icon url={newsWhiteIcon} />}
+          onPress={() => {}}
+        >
+          <Content direction="column">{currentTab === 3 && children}</Content>
+        </TabBar.Item>
+        <TabBar.Item
           key="Settings"
           title={((<Title>Settings</Title>) as any) as string}
-          selected={currentTab === 3}
+          selected={currentTab === 4}
           icon={<Icon url={settingsBlackIcon} />}
           selectedIcon={<Icon url={settingsWhiteIcon} />}
           onPress={() => history.push('/settings')}
         >
-          <Content direction="column">{currentTab === 3 && children}</Content>
+          <Content direction="column">{currentTab === 4 && children}</Content>
         </TabBar.Item>
       </TabBar>
     </Layout>
@@ -89,3 +99,4 @@ PageBar.defaultProps = {
 }
 
 export default PageBar
+ 
