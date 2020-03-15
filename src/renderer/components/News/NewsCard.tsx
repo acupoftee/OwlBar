@@ -44,8 +44,8 @@ const Topic = styled.span`
   color: white;
   font-weight: 700;
   text-transform: uppercase;
+  margin-left: 0;
   position: relative;
-  left: 0;
   top: -28px;
   font-size: 10px;
 `
