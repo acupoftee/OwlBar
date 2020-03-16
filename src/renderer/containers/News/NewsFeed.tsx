@@ -91,7 +91,7 @@ const NewsFeed = ({
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'none',
-                marginTop: '50px',
+                marginTop: '35px',
               }}
             >
               {posts}

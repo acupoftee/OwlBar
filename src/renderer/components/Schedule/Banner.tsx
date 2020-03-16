@@ -89,7 +89,7 @@ const Banner = ({
       <BannerBackground imageUrl={bannerBackground}>
         <BannerLogo logoUrl={bannerLogo} />
       </BannerBackground>
-      <EventWrapper background={Colors[hostId]}>
+      <EventWrapper background={Colors[hostId] || 'black'}>
         <EventInfo>
           <Content>Hosted by {host}</Content>
         </EventInfo>

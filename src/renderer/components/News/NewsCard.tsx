@@ -74,7 +74,7 @@ type Props = {
 
 const NewsCard = (props: Props) => (
   <Wrapper>
-    <Link to={`/post/${props.blogId}`}>
+    <Link to={`/article/${props.blogId}`}>
       <div>
         <div style={{ marginTop: '0' }}>
           <Cover

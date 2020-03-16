@@ -14,6 +14,7 @@ const Wrapper = styled(Flex)`
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  overflow-y: scroll !important;
 
   & > div {
     p {

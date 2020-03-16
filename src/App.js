@@ -8,14 +8,13 @@ import Schedule from './renderer/containers/Schedule'
 import MatchSummary from './renderer/containers/MatchSummary'
 import Preview from './renderer/containers/Preview'
 import SettingsPage from './renderer/containers/Settings'
-import { NewsCard, Post } from './renderer/components/News'
 import NewsFeed from './renderer/containers/News'
+import Article from './renderer/containers/Article'
 
 const store = configureStore()
 function App() {
   return (
     <Provider store={store}>
-      {/* <Router> */}
       <GlobalStyle />
       <Router>
         <Switch>
@@ -33,6 +32,9 @@ function App() {
           </Route>
           <Route path="/news">
             <NewsFeed />
+          </Route>
+          <Route path="/article/:id">
+            <Article />
           </Route>
           <Route path="/settings">
             <SettingsPage />
