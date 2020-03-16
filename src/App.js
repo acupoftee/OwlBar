@@ -9,7 +9,6 @@ import MatchSummary from './renderer/containers/MatchSummary'
 import Preview from './renderer/containers/Preview'
 import SettingsPage from './renderer/containers/Settings'
 import NewsFeed from './renderer/containers/News'
-import Article from './renderer/containers/Article'
 
 const store = configureStore()
 function App() {
@@ -33,9 +32,7 @@ function App() {
           <Route path="/news">
             <NewsFeed />
           </Route>
-          <Route path="/article/:id">
-            <Article />
-          </Route>
+
           <Route path="/settings">
             <SettingsPage />
           </Route>

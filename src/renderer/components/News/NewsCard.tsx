@@ -5,6 +5,8 @@ import { Flex } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 import { colors } from '../../styles/theme'
 
+const electron = window.require('electron')
+
 const Wrapper = styled(Flex)`
   width: 100vw;
   height: auto;
@@ -24,6 +26,11 @@ const Wrapper = styled(Flex)`
   }
 `
 
+const Card = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+`
 const Cover = styled.img`
   width: 100%;
   height: 194px;
@@ -74,23 +81,28 @@ type Props = {
 
 const NewsCard = (props: Props) => (
   <Wrapper>
-    <Link to={`/article/${props.blogId}`}>
-      <div>
-        <div style={{ marginTop: '0' }}>
-          <Cover
-            src={props.blogImageUrl}
-            alt={props.blogTitle}
-            title={props.blogTitle}
-          />
-          <Topic>{props.blogTopic}</Topic>
-        </div>
-        <TextWrapper>
-          <Date>{moment(props.datePublished).format('MMMM Do')}</Date>
-          <BlogTitle>{props.blogTitle}</BlogTitle>
-          <Summary>{props.blogSummary}</Summary>
-        </TextWrapper>
+    <Card
+      onClick={() => {
+        electron.remote.app.hide()
+        electron.shell.openExternal(
+          `https://overwatchleague.com/en-us/news/${props.blogId}`
+        )
+      }}
+    >
+      <div style={{ marginTop: '0' }}>
+        <Cover
+          src={props.blogImageUrl}
+          alt={props.blogTitle}
+          title={props.blogTitle}
+        />
+        <Topic>{props.blogTopic}</Topic>
       </div>
-    </Link>
+      <TextWrapper>
+        <Date>{moment(props.datePublished).format('MMMM Do')}</Date>
+        <BlogTitle>{props.blogTitle}</BlogTitle>
+        <Summary>{props.blogSummary}</Summary>
+      </TextWrapper>
+    </Card>
   </Wrapper>
 )
 
