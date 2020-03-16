@@ -75,7 +75,7 @@ const PageBar = ({
           selected={currentTab === 3}
           icon={<Icon url={newsGreyIcon} />}
           selectedIcon={<Icon url={newsWhiteIcon} />}
-          onPress={() => {}}
+          onPress={() => history.push('/news')}
         >
           <Content direction="column">{currentTab === 3 && children}</Content>
         </TabBar.Item>
@@ -99,4 +99,3 @@ PageBar.defaultProps = {
 }
 
 export default PageBar
- 

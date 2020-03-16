@@ -49,16 +49,16 @@ const MenuItem = styled.div`
 
 const WeekSelector = ({
   date,
-  addWeek,
-  subWeek,
-  disableAdd,
-  disableSub,
+  nextPage,
+  prevPage,
+  disableNext,
+  disablePrev,
 }: {
   date: number
-  addWeek: () => void
-  subWeek: () => void
-  disableAdd?: boolean
-  disableSub?: boolean
+  nextPage: () => void
+  prevPage: () => void
+  disableNext?: boolean
+  disablePrev?: boolean
 }) => {
   // const weeks = []
   // for (let i = 0; i <= 27; i++) {

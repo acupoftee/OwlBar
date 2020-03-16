@@ -31,32 +31,32 @@ const Item = styled(Flex.Item)`
   text-align: center;
 `
 
-const Date = styled.p`
+const Text = styled.p`
   font-size: 15px;
 `
 
-const DateSelector = ({
-  date,
-  addWeek,
-  subWeek,
-  disableAdd,
-  disableSub,
+const Paginator = ({
+  text,
+  nextPage,
+  prevPage,
+  disableNext,
+  disablePrev,
 }: {
-  date: number
-  addWeek: () => void
-  subWeek: () => void
-  disableAdd?: boolean
-  disableSub?: boolean
+  text: string
+  nextPage: () => void
+  prevPage: () => void
+  disableNext?: boolean
+  disablePrev?: boolean
 }) => (
   <Wrapper>
     <Flex>
-      <Button type="left" onClick={subWeek} disabled={disableSub} />
+      <Button type="left" onClick={prevPage} disabled={disablePrev} />
       <Item>
-        <Date>{`Week ${date} Schedule`}</Date>
+        <Text>{text}</Text>
       </Item>
-      <Button type="right" onClick={addWeek} disabled={disableAdd} />
+      <Button type="right" onClick={nextPage} disabled={disableNext} />
     </Flex>
   </Wrapper>
 )
 
-export default DateSelector
+export default Paginator

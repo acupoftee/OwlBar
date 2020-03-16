@@ -8,7 +8,8 @@ import Schedule from './renderer/containers/Schedule'
 import MatchSummary from './renderer/containers/MatchSummary'
 import Preview from './renderer/containers/Preview'
 import SettingsPage from './renderer/containers/Settings'
-import { NewsCard } from './renderer/components/News'
+import { NewsCard, Post } from './renderer/components/News'
+import NewsFeed from './renderer/containers/News'
 
 const store = configureStore()
 function App() {
@@ -16,15 +17,8 @@ function App() {
     <Provider store={store}>
       {/* <Router> */}
       <GlobalStyle />
-      <NewsCard
-        blogId={23335605}
-        datePublished={1584118080000}
-        blogTitle="Overwatch League Matches Moving Online"
-        blogTopic="announcement"
-        blogSummary="Matches will be played online, with teams competing in three different regions."
-        blogImageUrl="https://bnetcmsus-a.akamaihd.net/cms/blog_thumbnail/h3/H38Y0PI7Z6C31584043170625.jpg"
-      />
-      {/* <Switch>
+      <Router>
+        <Switch>
           <Route exact path="/">
             <Schedule />
           </Route>
@@ -37,11 +31,14 @@ function App() {
           <Route path="/preview/:id">
             <Preview />
           </Route>
+          <Route path="/news">
+            <NewsFeed />
+          </Route>
           <Route path="/settings">
             <SettingsPage />
           </Route>
-        </Switch> */}
-      {/* </Router> */}
+        </Switch>
+      </Router>
     </Provider>
   )
 }

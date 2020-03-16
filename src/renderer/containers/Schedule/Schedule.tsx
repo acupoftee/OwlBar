@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Flex } from 'antd-mobile'
-import { EventCard, DateSelector } from '../../components/Schedule'
+import { EventCard, Paginator } from '../../components/Schedule'
 import DataSection from '../../components/shared/DataSection'
 import * as actions from './actions'
 import { ScheduleAction } from './actions'
@@ -38,7 +38,7 @@ const Schedule = ({
     fetchScheduleData(week)
   }, [])
 
-  const addWeek = (week: number) => {
+  const nextPage = (week: number) => {
     let newWeek = week
     if (week < 27) {
       newWeek++
@@ -48,7 +48,7 @@ const Schedule = ({
     return newWeek
   }
 
-  const subWeek = (week: number) => {
+  const prevPage = (week: number) => {
     let newWeek = week
     if (week > 1) {
       newWeek--
@@ -61,18 +61,18 @@ const Schedule = ({
   return (
     <PageBar currentTab={1}>
       <>
-        <DateSelector
-          date={week}
-          addWeek={() => {
-            const newWeek = addWeek(week)
+        <Paginator
+          text={`Week ${week} Schedule`}
+          nextPage={() => {
+            const newWeek = nextPage(week)
             fetchScheduleData(newWeek)
           }}
-          subWeek={() => {
-            const newWeek = subWeek(week)
+          prevPage={() => {
+            const newWeek = prevPage(week)
             fetchScheduleData(newWeek)
           }}
-          disableAdd={week === 27}
-          disableSub={week === 1}
+          disableNext={week === 27 || loading}
+          disablePrev={week === 1 || loading}
         />
         <DataSection>
           {loading && <HexLoader />}

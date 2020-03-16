@@ -2,6 +2,7 @@ import React from 'react'
 import moment from 'moment-timezone'
 import styled from 'styled-components'
 import { Flex } from 'antd-mobile'
+import { Link } from 'react-router-dom'
 import { colors } from '../../styles/theme'
 
 const Wrapper = styled(Flex)`
@@ -15,7 +16,6 @@ const Wrapper = styled(Flex)`
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    cursor: pointer;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
     transform: translate3d(0, -3px, 3px) scale(0.92);
     img {
@@ -36,10 +36,11 @@ const TextWrapper = styled.div`
   height: auto;
   padding: 10px;
   padding-top: 0;
+  color: black;
 `
 
 const Topic = styled.span`
-  background-color: orange;
+  background-color: ${colors.orange};
   padding: 10px;
   color: white;
   font-weight: 700;
@@ -73,19 +74,23 @@ type Props = {
 
 const NewsCard = (props: Props) => (
   <Wrapper>
-    <div>
-      <Cover
-        src={props.blogImageUrl}
-        alt={props.blogTitle}
-        title={props.blogTitle}
-      />
-      <Topic>{props.blogTopic}</Topic>
-    </div>
-    <TextWrapper>
-      <Date>{moment(props.datePublished).format('MMMM Do')}</Date>
-      <BlogTitle>{props.blogTitle}</BlogTitle>
-      <Summary>{props.blogSummary}</Summary>
-    </TextWrapper>
+    <Link to={`/post/${props.blogId}`}>
+      <div>
+        <div style={{ marginTop: '0' }}>
+          <Cover
+            src={props.blogImageUrl}
+            alt={props.blogTitle}
+            title={props.blogTitle}
+          />
+          <Topic>{props.blogTopic}</Topic>
+        </div>
+        <TextWrapper>
+          <Date>{moment(props.datePublished).format('MMMM Do')}</Date>
+          <BlogTitle>{props.blogTitle}</BlogTitle>
+          <Summary>{props.blogSummary}</Summary>
+        </TextWrapper>
+      </div>
+    </Link>
   </Wrapper>
 )
 
