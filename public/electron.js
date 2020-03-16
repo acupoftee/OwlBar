@@ -22,8 +22,5 @@ const menubarApp = menubar({
 })
 
 menubarApp.on('ready', async () => {
-  menubarApp.window.on('focus', registerShortcuts);
-  menubarApp.window.on('blur', unregisterShortcuts);
-
   console.log('app is ready')
 })
