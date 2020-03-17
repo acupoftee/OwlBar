@@ -2,13 +2,14 @@ import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Flex } from 'antd-mobile'
-import { EventCard, Paginator } from '../../components/Schedule'
+import { EventCard, Paginator, BackToToday } from '../../components/Schedule'
 import DataSection from '../../components/shared/DataSection'
 import * as actions from './actions'
 import { ScheduleAction } from './actions'
 import { ScheduleState } from './types'
 import { PageBar } from '../../components/TabBar'
 import { HexLoader } from '../../components/Loaders'
+import getCurrentWeek from './date'
 
 const Divider = styled.hr`
   margin: 20px 25px 20px 25px;
@@ -37,6 +38,8 @@ const Schedule = ({
   useLayoutEffect(() => {
     fetchScheduleData(week)
   }, [])
+
+  const currentWeek = getCurrentWeek()
 
   const nextPage = (week: number) => {
     let newWeek = week
@@ -78,21 +81,55 @@ const Schedule = ({
           {loading && <HexLoader />}
           {error && 'error loading schedule'}
           {!loading && !error && scheduleData.tableData.events.length === 0 && (
-            <Flex align="center" justify="center" style={{ height: '100vh' }}>
-              There are no matches this week.
-            </Flex>
+            <>
+              {week !== currentWeek && (
+                <BackToToday
+                  backFunction={() => fetchScheduleData(currentWeek)}
+                />
+              )}
+              <Flex align="center" justify="center" style={{ height: '100vh' }}>
+                There are no matches this week.
+              </Flex>
+            </>
           )}
           {!loading &&
             !error &&
             week === 13 &&
             scheduleData.tableData.events[0].matches.length === 0 && (
-              <Flex align="center" justify="center" style={{ height: '100vh' }}>
-                All Star Week. Stay tuned for updates!
-              </Flex>
+              <>
+                {week !== currentWeek && (
+                  <BackToToday
+                    backFunction={() => fetchScheduleData(currentWeek)}
+                  />
+                )}
+                <Flex
+                  align="center"
+                  justify="center"
+                  style={{ height: '100vh' }}
+                >
+                  All Star Week. Stay tuned for updates!
+                </Flex>
+              </>
             )}
           {!loading && !error && (
             <div
               style={{ overflowY: 'scroll', height: 'auto', marginTop: '30px' }}
+              onScroll={function() {
+                const button = document.querySelector(
+                  '.backToToday'
+                ) as HTMLElement
+
+                button.classList.remove('animateBackToToday')
+                button.style.opacity = '0'
+                button.style.pointerEvents = 'none'
+                button.style.cursor = 'default'
+
+                setTimeout(function() {
+                  button.style.opacity = '1'
+                  button.style.pointerEvents = 'auto'
+                  button.style.cursor = 'pointer'
+                }, 3000)
+              }}
             >
               {scheduleData.tableData.events.map((event: any, idx: number) => {
                 return (
@@ -115,6 +152,11 @@ const Schedule = ({
                   </div>
                 )
               })}
+              {week !== currentWeek && (
+                <BackToToday
+                  backFunction={() => fetchScheduleData(currentWeek)}
+                />
+              )}
             </div>
           )}
         </DataSection>

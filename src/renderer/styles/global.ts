@@ -1,6 +1,18 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, keyframes } from 'styled-components'
 import { colors, fonts } from './theme'
 import 'antd-mobile/dist/antd-mobile.css'
+
+const reveal = keyframes`
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 
 /* eslint no-unused-expressions: 0 */
 const GlobalStyle = createGlobalStyle`
@@ -25,6 +37,9 @@ const GlobalStyle = createGlobalStyle`
     ::-webkit-scrollbar {
       display: none;
     }
+  }
+  .animateBackToToday {
+    animation: ${reveal} 1.5s 1;
   }
 `
 
