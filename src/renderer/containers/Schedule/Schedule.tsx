@@ -114,12 +114,13 @@ const Schedule = ({
           {!loading && !error && (
             <div
               style={{ overflowY: 'scroll', height: 'auto', marginTop: '30px' }}
-              onScroll={function() {
+              onScroll={() => {
                 const button = document.querySelector(
                   '.backToToday'
                 ) as HTMLElement
 
-                button.classList.remove('animateBackToToday')
+                button.classList?.remove('animateBackToToday')
+
                 button.style.opacity = '0'
                 button.style.pointerEvents = 'none'
                 button.style.cursor = 'default'
