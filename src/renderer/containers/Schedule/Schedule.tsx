@@ -145,7 +145,9 @@ const Schedule = ({
                         location: event.eventBanner?.venue.title,
                         ticketLink: event.eventBanner?.ticket.link.href,
                       }}
-                      matches={event.matches}
+                      matches={event.matches.filter(
+                        (match: any) => match !== false
+                      )}
                     />
                     {idx !== scheduleData.tableData.events.length - 1 && (
                       <Divider key={idx + 1} />
