@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { Flex, Icon } from 'antd-mobile'
 
 import { colors } from '../../styles/theme'
 
 const Wrapper = styled.div`
   position: fixed;
-  z-index: 999;
   width: 30px;
-  height: 78vh;
+  height: 72vh;
+  right: 130px;
   padding: 4px 7px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -18,57 +17,97 @@ const Wrapper = styled.div`
   transform-origin: right top;
 `
 
-const MenuItem = styled.div`
+const ScrollLabel = styled.div`
+  pointer-events: none;
+  padding: 8px 15px;
+  height: 30px;
+  width: auto;
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  background-color: ${colors.black};
+  color: ${colors.white};
+  text-transform: uppercase;
+  font-weight: 500;
+`
+
+const MenuItem = styled.span<{
+  disable: boolean
+}>`
   position: relative;
   font-size: 15px;
   width: 30px;
-  height: 28px;
+  height: 40px;
+  padding: 4px;
   transform: rotate(90deg);
   transform-origin: right top;
   right: 10px;
-  // margin-left: 5px;
-  // display: flex;
-  // justify-content: center;
+  display: block;
+  text-align: center;
+  color: gray;
+  font-weight: 500;
+  ${props =>
+    props.disable &&
+    css`
+      pointer-events: none;
+    `}
+
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) {
+    pointer-events: none;
+    color: ${colors.black}
+    z-index: -1;
+  }
 
   &:hover {
     cursor: pointer;
     color: orange;
   }
-
-  &:focus {
-    outline: 4px solid orange;
-  }
 `
 
-// function selected(e: React.MouseEvent) {
-//   console.log(e.target)
-//   e.preventDefault()
-//   e.target.style.borderBottom = '2px solid orange'
-//   // Here write a For Loop to put "border-style: none" to everyone else
-// }
-
 const WeekSelector = ({
-  date,
-  nextPage,
-  prevPage,
-  disableNext,
-  disablePrev,
+  disable,
+  handleClick,
+  currentWeek,
 }: {
-  date: number
-  nextPage: () => void
-  prevPage: () => void
-  disableNext?: boolean
-  disablePrev?: boolean
+  disable: boolean
+  handleClick: (e: any) => void
+  currentWeek: number
 }) => {
-  // const weeks = []
-  // for (let i = 0; i <= 27; i++) {
-  //   weeks.push(<MenuItem onClick={selected}>{i}</MenuItem>)
-  // }
-  // return (
-  //   <Wrapper>
-  //     <div>{weeks}</div>
-  //   </Wrapper>
-  // )
+  const weeks = []
+  for (let i = -2; i <= 27; i++) {
+    weeks.push(
+      <MenuItem
+        className={`menuItem menuItem-${i}`}
+        data-week={i}
+        onClick={handleClick}
+        disable={disable}
+      >
+        {i}
+      </MenuItem>
+    )
+  }
+  const highlightedWeek = document.querySelector(
+    `.menuItem-${currentWeek}`
+  ) as HTMLElement
+
+  if (highlightedWeek) {
+    highlightedWeek.style.borderBottom = '15px solid orange'
+    highlightedWeek.style.color = 'white'
+  }
+  return (
+    <>
+      <ScrollLabel>
+        <p style={{ borderRight: '1px solid gray', paddingRight: '10px' }}>
+          Weeks
+        </p>
+      </ScrollLabel>
+      <Wrapper>
+        <div>{weeks}</div>
+      </Wrapper>
+    </>
+  )
 }
 
 export default WeekSelector

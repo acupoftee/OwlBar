@@ -2,7 +2,12 @@ import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Flex } from 'antd-mobile'
-import { EventCard, Paginator, BackToToday } from '../../components/Schedule'
+import {
+  EventCard,
+  Paginator,
+  BackToToday,
+  WeekSelector,
+} from '../../components/Schedule'
 import DataSection from '../../components/shared/DataSection'
 import * as actions from './actions'
 import { ScheduleAction } from './actions'
@@ -41,41 +46,27 @@ const Schedule = ({
 
   const currentWeek = getCurrentWeek()
 
-  const nextPage = (week: number) => {
-    let newWeek = week
-    if (week < 27) {
-      newWeek++
-    } else {
-      newWeek = 27
-    }
-    return newWeek
-  }
-
-  const prevPage = (week: number) => {
-    let newWeek = week
-    if (week > 1) {
-      newWeek--
-    } else {
-      newWeek = 1
-    }
-    return newWeek
-  }
-
   return (
     <PageBar currentTab={1}>
       <>
-        <Paginator
-          text={`Week ${week} Schedule`}
-          nextPage={() => {
-            const newWeek = nextPage(week)
-            fetchScheduleData(newWeek)
+        <WeekSelector
+          currentWeek={week}
+          disable={loading}
+          handleClick={(e: any) => {
+            e.target.style.borderBottom = '15px solid orange'
+            e.target.style.color = 'white'
+
+            const menuItems = document.getElementsByClassName('menuItem')
+            for (let i = 3; i < menuItems.length; i++) {
+              if (i !== e.target.dataset.week) {
+                const item = menuItems[i] as HTMLElement
+                item.style.borderBottom = 'none'
+                item.style.color = 'gray'
+              }
+            }
+
+            fetchScheduleData(e.target.dataset.week)
           }}
-          prevPage={() => {
-            const newWeek = prevPage(week)
-            fetchScheduleData(newWeek)
-          }}
-          disableNext={week === 27 || loading}
-          disablePrev={week === 1 || loading}
         />
         <DataSection>
           {loading && <HexLoader />}
@@ -115,6 +106,9 @@ const Schedule = ({
             <div
               style={{ overflowY: 'scroll', height: 'auto', marginTop: '30px' }}
               onScroll={() => {
+                if (currentWeek === week) {
+                  return
+                }
                 const button = document.querySelector(
                   '.backToToday'
                 ) as HTMLElement
