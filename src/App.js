@@ -32,7 +32,6 @@ function App() {
           <Route path="/news">
             <NewsFeed />
           </Route>
-
           <Route path="/settings">
             <SettingsPage />
           </Route>
