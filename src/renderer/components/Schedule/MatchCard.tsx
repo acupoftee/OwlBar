@@ -8,6 +8,9 @@ import Logos from '../../../resources/Logos'
 
 import { colors } from '../../styles/theme'
 
+const Wrapper = styled.div`
+  transform: scale(0.95);
+`
 const Card = styled(Flex)`
   width: 100vw;
   height: 70px;
@@ -118,7 +121,7 @@ const MatchCard = ({
   start: number
 }) => {
   return (
-    <div style={{ transform: 'scale(0.95)' }}>
+    <Wrapper>
       <Card>
         <DateStrip startDate={start} status={status} live={live} />
         <Flex style={{ width: '100vw' }}>
@@ -143,7 +146,7 @@ const MatchCard = ({
         </Flex>
         {live && <LiveLoader />}
       </Card>
-    </div>
+    </Wrapper>
   )
 }
 
