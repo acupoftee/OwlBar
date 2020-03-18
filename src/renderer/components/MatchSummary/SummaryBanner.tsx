@@ -71,17 +71,21 @@ const DateBar = styled(Flex)`
   align-items: center;
 `
 
-const MatchLabelWrapper = styled(Flex)<{
+const MatchLabelWrapper = styled.div<{
   colors: string[]
 }>`
-  height: '100%',
-  background-image: linear-gradient(to right, ${props =>
-    props.colors[0]} 49%, ${props => props.colors[1]} 50%);
-  color: 'white';
-  text-transform: 'uppercase';
-  align-items: 'center';
-  padding-top: '5%';
-  font-size: '12px';
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    ${props => props.colors[0]} 49%,
+    ${props => props.colors[1]} 50%
+  );
+  color: white;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding-top: 5%;
+  font-size: 12px;
 `
 
 type SummaryBannerProps = {
