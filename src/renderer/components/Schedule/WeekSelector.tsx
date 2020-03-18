@@ -69,30 +69,28 @@ const MenuItem = styled.span<{
 
 `
 
-const WeekSelector = ({
-  disable,
-  handleClick,
-  currentWeek,
-}: {
+type Props = {
   disable: boolean
-  handleClick: (e: any) => void
   currentWeek: number
-}) => {
+  handleClick: (e: any) => void
+}
+
+const WeekSelector = (props: Props) => {
   const weeks = []
   for (let i = -2; i <= 27; i++) {
     weeks.push(
       <MenuItem
         className={`menuItem menuItem-${i}`}
         data-week={i}
-        onClick={handleClick}
-        disable={disable}
+        onClick={props.handleClick}
+        disable={props.disable}
       >
         {i}
       </MenuItem>
     )
   }
   const highlightedWeek = document.querySelector(
-    `.menuItem-${currentWeek}`
+    `.menuItem-${props.currentWeek}`
   ) as HTMLElement
 
   if (highlightedWeek) {

@@ -43,17 +43,6 @@ const TeamLogo = styled.img`
   padding-right: 10px;
 `
 
-// const Conference = styled.h4`
-//   padding: 10px 0;
-//   margin: 0;
-//   // background: #141114;
-//   background-color: ${colors.black};
-//   color: #fff;
-//   font-weight: 100;
-//   text-align: center;
-//   text-transform: capitalize;
-// `
-
 const headerRowRenderer = ({
   className,
   style,
@@ -126,9 +115,6 @@ const rowRenderer = ({
       <TeamLogo src={Logos[rowData.teamAbbName] as string} />
       {rowData.teamAbbName}
     </Cell>
-    {/* <Cell key="division" width="60">
-      {rowData.conf}
-    </Cell> */}
     <Cell key="rank" width="60">
       {ordinal(rowData.rank)}
     </Cell>
