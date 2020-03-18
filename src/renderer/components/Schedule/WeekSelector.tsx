@@ -99,7 +99,7 @@ const WeekSelector = ({
   return (
     <>
       <ScrollLabel>
-        <p style={{ borderRight: '1px solid gray', paddingRight: '10px' }}>
+        <p style={{ borderRight: '1px solid gray', paddingRight: '15px' }}>
           Weeks
         </p>
       </ScrollLabel>
