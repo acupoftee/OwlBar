@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment-timezone'
 import styled from 'styled-components'
 import { Flex } from 'antd-mobile'
-import { Link } from 'react-router-dom'
 import { colors } from '../../styles/theme'
 
 const electron = window.require('electron')
