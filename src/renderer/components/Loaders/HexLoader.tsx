@@ -49,11 +49,8 @@ const HexContainer = styled(Flex)`
 `
 
 const HexBorder = styled.div`
-  // position: absolute;
   transform-origin: center;
   transform: scale(0.4);
-  // left: 50%;
-  // top: 50%;
   width: 170px;
   height: 170px;
   border: 2px solid #ebedf1;
@@ -134,6 +131,7 @@ const Hexagon = styled.div`
   &:nth-child(1) {
     animation: ${animateHex} ${timing} infinite;
   }
+
   &:nth-child(2) {
     left: 53px;
     animation: ${animateHex} ${timing} 0.2s infinite;
