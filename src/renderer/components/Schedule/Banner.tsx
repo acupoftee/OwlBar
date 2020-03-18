@@ -69,29 +69,24 @@ const TicketLink = styled.span`
   }
 `
 
-const Banner = ({
-  bannerBackground,
-  bannerLogo,
-  host,
-  location,
-  hostId,
-  ticketLink,
-}: {
+type Props = {
   bannerBackground: string
   bannerLogo: string
   host: string
   location: string
   hostId: number
   ticketLink: string
-}) => {
+}
+
+const Banner = (props: Props) => {
   return (
     <>
-      <BannerBackground imageUrl={bannerBackground}>
-        <BannerLogo logoUrl={bannerLogo} />
+      <BannerBackground imageUrl={props.bannerBackground}>
+        <BannerLogo logoUrl={props.bannerLogo} />
       </BannerBackground>
-      <EventWrapper background={Colors[hostId] || 'black'}>
+      <EventWrapper background={Colors[props.hostId] || 'black'}>
         <EventInfo>
-          <Content>Hosted by {host}</Content>
+          <Content>Hosted by {props.host}</Content>
         </EventInfo>
         <EventInfo>
           <FontAwesomeIcon
@@ -105,7 +100,7 @@ const Banner = ({
           <TicketLink
             onClick={() => {
               electron.remote.app.hide()
-              electron.shell.openExternal(ticketLink)
+              electron.shell.openExternal(props.ticketLink)
             }}
           >
             tickets
@@ -116,7 +111,7 @@ const Banner = ({
             icon={faMapMarkerAlt}
             style={{ marginRight: '10px' }}
           />
-          {location}
+          {props.location}
         </EventInfo>
       </EventWrapper>
     </>
