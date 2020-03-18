@@ -2,7 +2,12 @@ import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Flex } from 'antd-mobile'
-import { EventCard, BackToToday, WeekSelector } from '../../components/Schedule'
+import {
+  EventCard,
+  BackToToday,
+  WeekSelector,
+  WeekLabel,
+} from '../../components/Schedule'
 import DataSection from '../../components/shared/DataSection'
 import * as actions from './actions'
 import { ScheduleAction } from './actions'
@@ -63,6 +68,7 @@ const Schedule = ({
             fetchScheduleData(e.target.dataset.week)
           }}
         />
+        <WeekLabel week={week} />
         <DataSection>
           {loading && <HexLoader />}
           {error && 'error loading schedule'}
@@ -99,7 +105,7 @@ const Schedule = ({
             )}
           {!loading && !error && (
             <div
-              style={{ overflowY: 'scroll', height: 'auto', marginTop: '30px' }}
+              style={{ overflowY: 'scroll', height: 'auto' }}
               onScroll={() => {
                 if (currentWeek === week) {
                   return
