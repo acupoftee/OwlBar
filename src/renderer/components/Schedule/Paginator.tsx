@@ -35,26 +35,30 @@ const Text = styled.p`
   font-size: 15px;
 `
 
-const Paginator = ({
-  text,
-  nextPage,
-  prevPage,
-  disableNext,
-  disablePrev,
-}: {
+type Props = {
   text: string
   nextPage: () => void
   prevPage: () => void
   disableNext?: boolean
   disablePrev?: boolean
-}) => (
+}
+
+const Paginator = (props: Props) => (
   <Wrapper>
     <Flex>
-      <Button type="left" onClick={prevPage} disabled={disablePrev} />
+      <Button
+        type="left"
+        onClick={props.prevPage}
+        disabled={props.disablePrev}
+      />
       <Item>
-        <Text>{text}</Text>
+        <Text>{props.text}</Text>
       </Item>
-      <Button type="right" onClick={nextPage} disabled={disableNext} />
+      <Button
+        type="right"
+        onClick={props.nextPage}
+        disabled={props.disableNext}
+      />
     </Flex>
   </Wrapper>
 )
