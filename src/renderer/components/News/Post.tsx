@@ -5,8 +5,6 @@ import styled from 'styled-components'
 
 import { Flex } from 'antd-mobile'
 
-import { colors } from '../../styles/theme'
-
 const Wrapper = styled(Flex)`
   width: 100vw;
   height: auto;
