@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .animateBackToToday {
-    animation: ${reveal} 1.5s 1;
+    animation: ${reveal} 4s 1;
   }
 `
 
