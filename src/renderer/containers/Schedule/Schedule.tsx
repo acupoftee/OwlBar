@@ -2,12 +2,7 @@ import React, { useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Flex } from 'antd-mobile'
-import {
-  EventCard,
-  Paginator,
-  BackToToday,
-  WeekSelector,
-} from '../../components/Schedule'
+import { EventCard, BackToToday, WeekSelector } from '../../components/Schedule'
 import DataSection from '../../components/shared/DataSection'
 import * as actions from './actions'
 import { ScheduleAction } from './actions'
@@ -88,23 +83,6 @@ const Schedule = ({
             week === 13 &&
             scheduleData.tableData.events[0].matches.length === 0 && (
               <>
-                {week !== currentWeek && (
-                  <BackToToday
-                    backFunction={() => {
-                      const menuItems = document.getElementsByClassName(
-                        'menuItem'
-                      )
-                      for (let i = 3; i < menuItems.length; i++) {
-                        if (i !== currentWeek) {
-                          const item = menuItems[i] as HTMLElement
-                          item.style.borderBottom = 'none'
-                          item.style.color = 'gray'
-                        }
-                      }
-                      fetchScheduleData(currentWeek)
-                    }}
-                  />
-                )}
                 <Flex
                   align="center"
                   justify="center"
@@ -112,6 +90,11 @@ const Schedule = ({
                 >
                   All Star Week. Stay tuned for updates!
                 </Flex>
+                {week !== currentWeek && (
+                  <BackToToday
+                    backFunction={() => fetchScheduleData(currentWeek)}
+                  />
+                )}
               </>
             )}
           {!loading && !error && (

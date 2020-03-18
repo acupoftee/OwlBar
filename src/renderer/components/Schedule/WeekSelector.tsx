@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
 const ScrollLabel = styled.div`
   pointer-events: none;
-  padding: 8px 15px;
+  padding: 8px 0px 8px 14px;
   height: 30px;
   width: auto;
   z-index: 999;
@@ -29,6 +29,7 @@ const ScrollLabel = styled.div`
   color: ${colors.white};
   text-transform: uppercase;
   font-weight: 500;
+  text-align: center;
 `
 
 const MenuItem = styled.span<{
@@ -46,6 +47,7 @@ const MenuItem = styled.span<{
   text-align: center;
   color: gray;
   font-weight: 500;
+
   ${props =>
     props.disable &&
     css`
@@ -62,8 +64,9 @@ const MenuItem = styled.span<{
 
   &:hover {
     cursor: pointer;
-    color: orange;
+    color: orange !important;
   }
+
 `
 
 const WeekSelector = ({
