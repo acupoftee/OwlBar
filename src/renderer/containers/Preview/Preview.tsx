@@ -53,7 +53,6 @@ const Preview = ({
                 homeTeamAbbreviation={comparisonData.home.teamAbbName}
                 awayTeamAbbreviation={comparisonData.away.teamAbbName}
                 matchDate={comparisonData.startDate}
-                // matchAddress={location.state?.matchLocation}
               />
               <Table home={comparisonData.home} away={comparisonData.away} />
             </div>
