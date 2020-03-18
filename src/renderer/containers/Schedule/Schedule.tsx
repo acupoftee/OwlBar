@@ -124,7 +124,7 @@ const Schedule = ({
                   button.style.opacity = '1'
                   button.style.pointerEvents = 'auto'
                   button.style.cursor = 'pointer'
-                }, 5000)
+                }, 7000)
               }}
             >
               {scheduleData.tableData.events.map((event: any, idx: number) => {
