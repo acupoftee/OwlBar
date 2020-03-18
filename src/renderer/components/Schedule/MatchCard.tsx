@@ -105,46 +105,44 @@ const DateStrip = ({
   )
 }
 
-const MatchCard = ({
-  homeTeamAbb,
-  awayTeamAbb,
-  status,
-  scores,
-  live,
-  start,
-}: {
+type Props = {
   homeTeamAbb: string
   awayTeamAbb: string
   status: MatchStatus
   scores: number[]
   live: boolean
   start: number
-}) => {
+}
+const MatchCard = (props: Props) => {
   return (
     <Wrapper>
       <Card>
-        <DateStrip startDate={start} status={status} live={live} />
+        <DateStrip
+          startDate={props.start}
+          status={props.status}
+          live={props.live}
+        />
         <Flex style={{ width: '100vw' }}>
-          <Team background={getPrimaryColor(homeTeamAbb).hex}>
-            <TeamName>{homeTeamAbb}</TeamName>
-            <TeamLogo src={Logos[homeTeamAbb] as string} />
-            {status !== 'PENDING' && (
+          <Team background={getPrimaryColor(props.homeTeamAbb).hex}>
+            <TeamName>{props.homeTeamAbb}</TeamName>
+            <TeamLogo src={Logos[props.homeTeamAbb] as string} />
+            {props.status !== 'PENDING' && (
               <span style={{ transition: 'transform 0.2s ease' }}>
-                {scores[0] || 0}
+                {props.scores[0] || 0}
               </span>
             )}
           </Team>
-          <Team background={getPrimaryColor(awayTeamAbb).hex}>
-            {status !== 'PENDING' && (
+          <Team background={getPrimaryColor(props.awayTeamAbb).hex}>
+            {props.status !== 'PENDING' && (
               <span style={{ transition: 'transform 0.2s ease' }}>
-                {scores[1] || 0}
+                {props.scores[1] || 0}
               </span>
             )}
-            <TeamLogo src={Logos[awayTeamAbb] as string} />
-            <TeamName>{awayTeamAbb}</TeamName>
+            <TeamLogo src={Logos[props.awayTeamAbb] as string} />
+            <TeamName>{props.awayTeamAbb}</TeamName>
           </Team>
         </Flex>
-        {live && <LiveLoader />}
+        {props.live && <LiveLoader />}
       </Card>
     </Wrapper>
   )
