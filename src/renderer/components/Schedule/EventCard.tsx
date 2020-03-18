@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   height: auto;
   padding-bottom: 5px;
 `
-interface BannerProps {
+type BannerProps = {
   bannerBackground: string
   bannerLogo: string
   host: string
