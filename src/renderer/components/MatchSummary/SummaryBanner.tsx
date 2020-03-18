@@ -71,6 +71,19 @@ const DateBar = styled(Flex)`
   align-items: center;
 `
 
+const MatchLabelWrapper = styled(Flex)<{
+  colors: string[]
+}>`
+  height: '100%',
+  background-image: linear-gradient(to right, ${props =>
+    props.colors[0]} 49%, ${props => props.colors[1]} 50%);
+  color: 'white';
+  text-transform: 'uppercase';
+  align-items: 'center';
+  padding-top: '5%';
+  font-size: '12px';
+`
+
 type SummaryBannerProps = {
   homeTeamAbbreviation: string
   awayTeamAbbreviation: string
@@ -109,24 +122,16 @@ const SummaryBanner = (props: SummaryBannerProps) => (
           <Score>{props.scores[0]}</Score>
         </Flex>
       </Team>
-      <div
-        style={{
-          height: '100%',
-          backgroundImage: `linear-gradient(to right, ${
-            getPrimaryColor(props.homeTeamAbbreviation).hex
-          } 49%, ${getPrimaryColor(props.awayTeamAbbreviation).hex} 50%`,
-          color: 'white',
-          textTransform: 'uppercase',
-          display: 'flex',
-          alignItems: 'center',
-          paddingTop: '5%',
-          fontSize: '12px',
-        }}
+      <MatchLabelWrapper
+        colors={[
+          getPrimaryColor(props.homeTeamAbbreviation).hex,
+          getPrimaryColor(props.awayTeamAbbreviation).hex,
+        ]}
       >
         <span style={{ backgroundColor: '#2c2c2c', padding: '3px' }}>
           Final
         </span>
-      </div>
+      </MatchLabelWrapper>
       <Team background={getPrimaryColor(props.awayTeamAbbreviation).hex}>
         <Flex
           direction="column"
