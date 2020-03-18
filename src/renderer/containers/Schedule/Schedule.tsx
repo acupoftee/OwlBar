@@ -90,7 +90,19 @@ const Schedule = ({
               <>
                 {week !== currentWeek && (
                   <BackToToday
-                    backFunction={() => fetchScheduleData(currentWeek)}
+                    backFunction={() => {
+                      const menuItems = document.getElementsByClassName(
+                        'menuItem'
+                      )
+                      for (let i = 3; i < menuItems.length; i++) {
+                        if (i !== currentWeek) {
+                          const item = menuItems[i] as HTMLElement
+                          item.style.borderBottom = 'none'
+                          item.style.color = 'gray'
+                        }
+                      }
+                      fetchScheduleData(currentWeek)
+                    }}
                   />
                 )}
                 <Flex
@@ -151,7 +163,19 @@ const Schedule = ({
               })}
               {week !== currentWeek && (
                 <BackToToday
-                  backFunction={() => fetchScheduleData(currentWeek)}
+                  backFunction={() => {
+                    const menuItems = document.getElementsByClassName(
+                      'menuItem'
+                    )
+                    for (let i = 3; i < menuItems.length; i++) {
+                      if (i !== currentWeek) {
+                        const item = menuItems[i] as HTMLElement
+                        item.style.borderBottom = 'none'
+                        item.style.color = 'gray'
+                      }
+                    }
+                    fetchScheduleData(currentWeek)
+                  }}
                 />
               )}
             </div>
