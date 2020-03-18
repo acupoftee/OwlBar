@@ -95,15 +95,6 @@ const Table = ({ home, away }: { home: any; away: any }) => {
     )
   )
 
-  // const header = (
-  //   <Row>
-  //     <Column align="left">{home.teamAbbName}</Column>
-  //     <Column align="center">Stats</Column>
-  //     <Column align="right">{away.teamAbbName}</Column>
-  //   </Row>
-  // )
-  // displayedTable.unshift(header)
-
   return <Wrapper>{displayedTable}</Wrapper>
 }
 
