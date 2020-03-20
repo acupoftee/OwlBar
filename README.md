@@ -32,7 +32,9 @@ Check out up-to-date standings and see how your favorite team stack up with the 
 
 Gearing up for a future match? See how two teams match up against each other.
 
-# Download Today!
+### Download Today!
+
+Click [here](https://github.com/acupoftee/OwlBar/releases) to get the latest release for **Mac**, **Windows**, and **Linux**!
 
 ---
 
