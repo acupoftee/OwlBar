@@ -1,40 +1,33 @@
-# Overwatch League Bar
-
-Follow Overwatch League right on your desktop! (WIP)
-
-<p display="flex">
-<img src="assets/schedule.png" title="Schedule" alt="Schedule" height="300">
-<img src="assets/matchsummary.png" title="Match Summary" alt="Match Summary" height="300">
-<img src="assets/standings.png" title="Standings" alt="Standings" height="300">
+<p align="center">
+  <img src="assets/logo.png" alt="OWL Bar" height="250">
+  <h3 align="center">Overwatch League Bar</h3>
+  <p align="center">Follow Overwatch League right on your desktop!</p>
 </p>
 
-## Bundle Issue
+# About
 
-This current branch displays a blank app after running the command `npm run electron-pack`. It produces the following error in the developer tools.
+OWL Bar is bringing Overwatch League to your desktop. Stay up to date on matches, standings, and league news!
 
-```
-Not allowed to load local resource: file:///Applications/OWL%20Bar.app/Contents/Resources/app.asar/index.html
-```
+<p align="center">
+<img src="assets/schedule_1.png" title="Schedule" alt="Schedule" height="400">
+<img src="assets/summary_1.png" title="Match Summary" alt="Match Summary" height="400">
+<img src="assets/standings.png" title="Standings" alt="Standings" height="400">
+</p>
 
-## Reproduction Steps
+<p align="center">
+<img src="assets/live.gif" title="Live Match" alt="Live Match" height="400">
+</p>
 
-1. Switch the current branch over to `menubar` on Github. Then, clone the branch.
-2. Navigate to the project branch, then install dependencies with `yarn`.
-3. Run `npm run electron-pack` to build the project.
-4. Navigate to the `dist` directory, and install the app for your OS
-   1. MacOS: Select `OWL Bar-0.1.0.dmg`
-   2. Windows: Select `OWL Bar Setup 0.1.0.exe`
-5. Click on the menu icon (it should be a white cat for now). Then you should see a blank white app.
+## Features ✨
 
-The main build file is located in `public/electron.js`. This points Electron to `build/index.html`.
+### Schedule
 
-The `build` property in `package.json` lists files to include in the final build:
+View weekly schedules, including scores for previous matches, and more.
 
-```
-"files": [
-  "build/",
-  "public/electron.js"
-],
-```
+### Standings
 
-It should include the `build` directory produced by `create-react-app`'s build script, and the electron script used to launch the app.
+Check out up-to-date standings and see how your favorite team stack up with the rest of the league.
+
+### Previews
+
+Gearing up for a future match? See how two teams match up against each other.

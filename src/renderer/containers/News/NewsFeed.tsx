@@ -1,5 +1,4 @@
 import React, { useState, useLayoutEffect, useRef, useCallback } from 'react'
-import useNewsSearch from './useNewsSearch'
 import { connect } from 'react-redux'
 import { NewsCard } from '../../components/News'
 import DataSection from '../../components/shared/DataSection'
