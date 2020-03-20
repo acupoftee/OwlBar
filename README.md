@@ -13,9 +13,9 @@ OWL Bar is bringing Overwatch League to your desktop. Stay up to date on matches
 <img src="assets/summary_1.png" title="Match Summary" alt="Match Summary" height="400">
 <img src="assets/standings.png" title="Standings" alt="Standings" height="400">
 </p>
-
+</br>
 <p align="center">
-<img src="assets/live.gif" title="Live Match" alt="Live Match" height="400">
+<img src="assets/live.gif" title="Live Match" alt="Live Match" height="600">
 </p>
 
 ## Features ✨
