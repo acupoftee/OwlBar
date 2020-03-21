@@ -36,20 +36,20 @@ const Bar = styled.div`
   text-align: center;
 `
 
-const FirstBar = styled(Bar)`
+const RedBar = styled(Bar)`
   background-color: red;
   animation: ${loading} 2s ease-in-out infinite;
 `
 
-const SecondBar = styled(Bar)`
+const WhiteBar = styled(Bar)`
   background-color: white;
   animation: ${loading} 2s ease-in-out 1s infinite;
 `
 
 const LiveLoader = () => (
   <Wrapper>
-    <FirstBar />
-    <SecondBar />
+    <RedBar />
+    <WhiteBar />
   </Wrapper>
 )
 
