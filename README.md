@@ -33,6 +33,10 @@ Gearing up for a future match? See how two teams match up against each other.
 
 Click [here](https://github.com/acupoftee/OwlBar/releases) to get the latest release for **Mac**, **Windows**, and **Linux**!
 
+### Inspiration
+
+[NBA Bar by xhomeyy](https://github.com/xxhomey19/nba-bar). Thank you for making such a cool app to learn from!
+
 ### License
 
 **GPLv3.** © acupoftee
