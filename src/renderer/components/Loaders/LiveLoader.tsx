@@ -1,3 +1,4 @@
+// https://github.com/xxhomey19/nba-bar/blob/master/renderer/components/Loader/BarLoader.js
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
