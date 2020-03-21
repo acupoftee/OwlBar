@@ -35,7 +35,7 @@ Click [here](https://github.com/acupoftee/OwlBar/releases) to get the latest rel
 
 ### Inspiration
 
-This app was inspired by [NBA Bar by xhomeyy](https://github.com/xxhomey19/nba-bar). Thank you for making such a cool app to learn from!
+This app was inspired by [NBA Bar by xhomeyy](https://github.com/xxhomey19/nba-bar). Thank you for making such a cool app! Your dedication to helping the NBA grow is inspiring, and I'd love to do the same with esports.
 
 ### License
 
