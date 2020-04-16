@@ -6,12 +6,12 @@ import { faMapMarkerAlt, faTicketAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Colors from '../../../resources/Colors'
 
-const electron = window.require('electron')
+// const electron = window.require('electron')
 
 const BannerBackground = styled.div<{
   imageUrl: string
 }>`
-  background-image: url(${props => props.imageUrl});
+  background-image: url(${(props) => props.imageUrl});
   background-size: cover;
   background-position: 100% 100%;
   width: 100%;
@@ -25,7 +25,7 @@ const BannerBackground = styled.div<{
 const BannerLogo = styled.div<{
   logoUrl: string
 }>`
-  background-image: url(${props => props.logoUrl});
+  background-image: url(${(props) => props.logoUrl});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@ const EventWrapper = styled(Flex)<{
 }>`
   justify-content: center;
   flex-wrap: wrap;
-  background-color: ${props => props.background};
+  background-color: ${(props) => props.background};
 `
 
 const EventInfo = styled(Flex)`
@@ -97,14 +97,15 @@ const Banner = (props: Props) => {
               transform: 'rotate(-45deg)',
             }}
           />
-          <TicketLink
+          online
+          {/* <TicketLink
             onClick={() => {
               electron.remote.app.hide()
               electron.shell.openExternal(props.ticketLink)
             }}
           >
             tickets
-          </TicketLink>
+          </TicketLink> */}
         </EventInfo>
         <EventInfo>
           <FontAwesomeIcon
