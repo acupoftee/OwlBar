@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import Banner from './Banner'
 import MatchCard from './MatchCard'
 
+const electron = window.require('electron')
+
 const Wrapper = styled.div`
   width: 100%;
   height: auto;
@@ -48,23 +50,38 @@ const EventCard = ({
             start={match.startDate}
           />
         )
-        return match.status === 'PENDING' ? (
-          <Link
-            key={idx}
-            to={{
-              pathname: `/preview/${match.id}`,
-              state: {
-                matchLocation: `${bannerProps.location}`,
-              },
-            }}
-          >
-            {content}
-          </Link>
-        ) : (
-          <Link key={idx} to={`/match/${match.id}`}>
-            {content}
-          </Link>
-        )
+        if (match.status === 'ONGOING') {
+          return (
+            <div
+              onClick={() => {
+                electron.remote.app.hide()
+                electron.shell.openExternal(
+                  'https://www.youtube.com/overwatchleague'
+                )
+              }}
+            >
+              {content}
+            </div>
+          )
+        } else {
+          return match.status === 'PENDING' ? (
+            <Link
+              key={idx}
+              to={{
+                pathname: `/preview/${match.id}`,
+                state: {
+                  matchLocation: `${bannerProps.location}`,
+                },
+              }}
+            >
+              {content}
+            </Link>
+          ) : (
+            <Link key={idx} to={`/match/${match.id}`}>
+              {content}
+            </Link>
+          )
+        }
       })}
     </>
   </Wrapper>
