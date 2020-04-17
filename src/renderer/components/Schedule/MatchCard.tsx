@@ -35,7 +35,7 @@ const Card = styled(Flex)`
 const Team = styled(Flex)<{
   background: string
 }>`
-  background-color: ${props => props.background};
+  background-color: ${(props) => props.background};
   width: 50%;
   height: 100%;
   color: white;
@@ -55,7 +55,7 @@ const TeamLogo = styled.img`
 const DateBar = styled(Flex)<{
   live?: boolean
 }>`
-  background-color: ${props => (props.live ? 'red' : 'gray')};
+  background-color: ${(props) => (props.live ? 'red' : 'gray')};
   color: ${colors.white};
   width: 100%;
   height: 20px;
@@ -68,7 +68,7 @@ const DateBar = styled(Flex)<{
   span {
     font-size: 11px;
     font-weight: 500;
-    color: ${props => (props.live ? 'red' : 'gray')};
+    color: ${(props) => (props.live ? 'red' : 'gray')};
   }
 `
 
