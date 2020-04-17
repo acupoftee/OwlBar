@@ -6,7 +6,7 @@ import { faMapMarkerAlt, faTicketAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Colors from '../../../resources/Colors'
 
-// const electron = window.require('electron')
+const electron = window.require('electron')
 
 const BannerBackground = styled.div<{
   imageUrl: string
@@ -97,15 +97,16 @@ const Banner = (props: Props) => {
               transform: 'rotate(-45deg)',
             }}
           />
-          online
-          {/* <TicketLink
+          <TicketLink
             onClick={() => {
               electron.remote.app.hide()
-              electron.shell.openExternal(props.ticketLink)
+              electron.shell.openExternal(
+                props.ticketLink || 'https://www.youtube.com/overwatchleague'
+              )
             }}
           >
-            tickets
-          </TicketLink> */}
+            {props.host.toLowerCase() === 'owl' ? 'online' : 'tickets'}
+          </TicketLink>
         </EventInfo>
         <EventInfo>
           <FontAwesomeIcon
