@@ -129,7 +129,7 @@
     "@storybook/preset-create-react-app": "^1.5.2",
     "@storybook/react": "^5.3.13",
     "concurrently": "^5.0.0",
-    "electron": "^7.1.2",
+    "electron": "^18.3.7",
     "electron-builder": "^21.2.0",
     "electron-react-devtools": "^0.5.3",
     "typescript": "^3.7.5",
